@@ -1,0 +1,141 @@
+:root {
+    --sivio-nprogress-color: #7fbd42;
+  }
+  
+  @font-face {
+    font-family: 'TT Commons';
+    src: url('/fonts/TT.Commons/TTCommons-Regular.ttf');
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'TT Commons Demibold';
+    src: url('/fonts/TT.Commons/TTCommons-DemiBold.ttf');
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'TT Commons Medium';
+    src: url('/fonts/TT.Commons/TTCommons-Medium.ttf');
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'TT Commons Bold';
+    src: url('/fonts/TT.Commons/TTCommons-Bold.ttf');
+    font-display: swap;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  img[width] {
+    max-width: 700px !important;
+    height: auto !important;
+  }
+  
+  .decorate {
+    text-decoration-color: transparent;
+  }
+  .decoration-green:hover .decorate {
+    transition: text-decoration 300ms ease-in-out;
+    text-decoration: underline !important;
+    text-decoration-color: #7fbd42 !important;
+    text-underline-position: under !important;
+  }
+  .text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  
+  /* NProgress */
+  /* Make clicks pass-through */
+  #nprogress {
+    pointer-events: none;
+  }
+  #progress:after {
+    display: block;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  #nprogress .bar {
+    background: var(--sivio-nprogress-color);
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+  }
+  /* Fancy blur effect */
+  #nprogress .peg {
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 10px var(--sivio-nprogress-color),
+      0 0 5px var(--sivio-nprogress-color);
+    opacity: 1;
+    -webkit-transform: rotate(3deg) translate(0px, -4px);
+    -ms-transform: rotate(3deg) translate(0px, -4px);
+    transform: rotate(3deg) translate(0px, -4px);
+  }
+  /* Remove these to get rid of the spinner */
+  #nprogress .spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    top: 7px;
+    right: 5px;
+  }
+  #nprogress .spinner-icon {
+    width: 28px;
+    height: 28px;
+    box-sizing: border-box;
+    border: solid 3px transparent;
+    border-top-color: var(--sivio-nprogress-color);
+    border-left-color: var(--sivio-nprogress-color);
+    border-radius: 50%;
+    -webkit-animation: nprogress-spinner 400ms linear infinite;
+    animation: nprogress-spinner 400ms linear infinite;
+  }
+  .nprogress-custom-parent {
+    overflow: hidden;
+    position: relative;
+  }
+  .nprogress-custom-parent #nprogress .spinner,
+  .nprogress-custom-parent #nprogress .bar {
+    position: absolute;
+  }
+  @-webkit-keyframes nprogress-spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes nprogress-spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  html {
+    @apply 2xl:text-xl;
+  }
+  body {
+    @apply dark:bg-gray-deeper dark:text-gray-darker;
+  }
