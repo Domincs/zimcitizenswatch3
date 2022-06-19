@@ -1,4 +1,9 @@
-import '../styles/globals.css'
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import NProgress from 'nprogress'; //nprogress module
+import * as gtag from '../lib/gtag';
+import 'tailwindcss/tailwind.css';
+import '../styles/tailwind.css';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

@@ -19,6 +19,7 @@ module.exports = {
       gray: {
         light: '#F5F7FB',
         darker: '#EEEEEE',
+        divider: '#BEBEBE',
         deep: '#1A3950',
         normal: '#1C2B36',
         deeper: '#14222D',
@@ -33,7 +34,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         hero: 'url(/images/hero.png)',
-        entre: 'url(/images/centre-for-entrepreneurship-header.jpeg)',
+        centre: 'url(/images/centre-for-entrepreneurship-header.jpeg)',
         entrepreneurship: 'url(/images/labs.jpg)',
         philanthropy: 'url(/images/philLab.png)',
         policy: 'url(/images/policyLab.png)',
