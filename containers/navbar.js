@@ -55,7 +55,7 @@ function classNames(...classes) {
                           <Menu.Button className="flex rounded-full border focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white border-[#000000] px-6 py-1">
                             <span className="flex flex-row items-center gap-2">
                               <span>{item.name}</span>
-                              <img src="icons/dropdown.svg" className="h-[9px]" />
+                              <img src="/icons/dropdown.svg" className="h-[9px]" />
                             </span>
                             
                           </Menu.Button>

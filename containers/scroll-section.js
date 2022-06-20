@@ -30,7 +30,7 @@ export function ScrollSection() {
                 <div className="flex w-fit px-4">
                     <span className="flex h-fit my-0 mx-[8em] w-max origin-top-left rotate-90 flex-row bg-orange px-6 py-10">
                         <span className="text-2xl uppercase leading-none tracking-[0.16em]">Visit Malawi tracker</span>
-                        <img src="icons/link.svg" alt="link" />
+                        <img src="/icons/link.svg" alt="link" />
                     </span>
 
                 </div>

@@ -18,7 +18,7 @@ export function OverallSummaryContainer() {
                     <img src="maps/mw.svg" className="h-[16em] mb-8" />
                     <Button color="orange">
                     <span className="flex flex-row gap-4">
-                        <span>Visit Malawi Tracker</span><img src="icons/right-arrow-white.svg" className="h-[0.7em]" />
+                        <span>Visit Malawi Tracker</span><img src="/icons/right-arrow-white.svg" className="h-[0.7em]" />
                         </span>
                         
                     </Button>
