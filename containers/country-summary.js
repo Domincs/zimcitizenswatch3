@@ -4,7 +4,7 @@ import { Newsletter } from "./newsletter";
 export function CountrySummaryContainer() {
     return (
         <div className="grid grid-cols-3">
-            <div className="bg-green">
+            <div className="bg-green-light">
                 <h2 className="text-[56px]">Time Since inauguration</h2>
             </div>
             <div className="flex justify-between py-4 w-full col-span-2">

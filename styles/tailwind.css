@@ -1,7 +1,7 @@
 :root {
     --sivio-nprogress-color: #7fbd42;
   }
-  
+
   @font-face {
     font-family: 'TT Commons';
     src: url('/fonts/TT.Commons/TTCommons-Regular.ttf');
@@ -200,3 +200,4 @@
   body {
     @apply dark:bg-gray-deeper dark:text-gray-darker;
   }
+

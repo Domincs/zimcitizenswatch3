@@ -8,7 +8,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: {
-      green: '#7FBD42',
+      green: {
+        light: '#7FBD42',
+        darker: '#678C13'
+      },
       orange: '#F15C27',
       black: '#000000',
       white: '#ffffff',
@@ -62,7 +65,7 @@ module.exports = {
           css: {
             // color: '#333',
             a: {
-              color: theme('colors.green'),
+              color: theme('colors.green-light'),
             },
             h2: {
               display: 'block',
