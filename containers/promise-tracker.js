@@ -9,14 +9,14 @@ export function PromiseTracker({sector, status, icon, promise }) {
                 <div className="pl-1 sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem] pr-6 flex flex-col">
                     <div className="flex flex-row gap-8">
                         <HorizontalBadge background="white">
-                        <span className="text-black">{sector}</span>
+                        <span className="text-black flex items-center">{sector}</span>
                         </HorizontalBadge>
                         <HorizontalBadge background="green-light">
-                        <div className="grid grid-cols-2 text-white">
-                            <span>Status:</span>
-                                <div className="flex flex-row">
-                                    <span className="font-semibold">{status}</span>
-                                    <img src={icon} className="h-6" />
+                        <div className="grid grid-cols-2 text-white flex items-center">
+                            <span className="">Status:</span>
+                                <div className="flex flex-row items-center">
+                                    <span className="font-semibold flex">{status}</span>
+                                    <img src={icon} className="h-[25px]" />
                                 </div>
                         </div>
                         </HorizontalBadge>

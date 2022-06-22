@@ -23,8 +23,8 @@ export function ScrollSection() {
                     </span>
                 </span>
 
-                <div className="flex flex-col min-w-[40em]">
-                    <h2 className="text-4xl uppercase">Summary of Promises</h2>
+                <div className="flex flex-col min-w-[40em] my-12">
+                    <h2 className="text-4xl leading-none uppercase">Summary of Promises</h2>
                     <SummaryGrid sectors={sectors} />
                 </div>
                 <div className="flex w-fit px-4">
