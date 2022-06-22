@@ -15,7 +15,7 @@ export function SectorPromisesContainer () {
                 <div className="pl-1 sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem] pr-6">
                      <h2 className="text-[32px] my-8">Arranged in order of latest update</h2>
 
-                    <PromiseItemContainer status="implemented" color="green-darker" icon="/icons/implemented.svg" date="13-June-2021"/>
+                    <PromiseItemContainer status="implemented" color="#678C13" icon="/icons/implemented.svg" date="13-June-2021"/>
                 </div>
                 
             </div>

@@ -16,7 +16,7 @@ export default function Home({country}) {
     {label: "Implemented", value: "56"}
   ]
   return (
-    <div className="static mb-[6em]">
+    <div className="static mb-[6em] my-4">
       <SEO title='AfricanCitizensWatch' />
       <NavbarContainer />
       <main>

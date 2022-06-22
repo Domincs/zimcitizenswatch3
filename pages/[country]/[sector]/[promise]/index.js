@@ -13,7 +13,12 @@ export default function Home({}) {
         <div className="container m-auto my-12">
           <Breadcrumb />
         </div>
-        <PromiseTracker icon="/icons/kept.svg" sector="Economy" status="Kept" />
+        <PromiseTracker 
+          icon="/icons/kept.svg" 
+          sector="Economy" 
+          status="Kept" 
+          promise="Government's fiscal policy will put emphasis on strong fiscal discipline, accountability and transparency for the restoration of macro-economic stability."
+        />
       </main>
     </div>
   );

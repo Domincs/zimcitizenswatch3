@@ -1,11 +1,14 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { useRouter } from "next/router";
 
 export function NavbarContainer() {
+  const { asPath } = useRouter();
+  console.log(asPath)
 
 const navigation = [
   { name: 'Reports', href: '#', type: 'link', active: true },
-  { name: 'Select Country', href: '#', type: 'dropdown', option: [{country: "Malawi", link: "/malawi"}, {country: "Zambia", link: "/zambia"}] }
+  { name: 'Select Country', href: '#', type: 'dropdown', option: [{country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'}, {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'}] }
 ]
 
 function classNames(...classes) {
@@ -28,10 +31,11 @@ function classNames(...classes) {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex-shrink-0 flex items-center">
+                <div className="flex-shrink-0 flex flex-col leading-none">
                   <h4 className="text-2xl font-semibold">
                     CitizensWatch
                   </h4>
+                  <span>{asPath.includes('/zambia') ? 'Zambia': (asPath.includes('/malawi') ? 'Malawi': <></>)}</span>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-4">
@@ -52,10 +56,23 @@ function classNames(...classes) {
                     else if(item.type === 'dropdown') {
                       return (
                         <Menu as="div" className="ml-3 relative">
-                          <Menu.Button className="flex rounded-full border focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white border-[#000000] px-6 py-1">
-                            <span className="flex flex-row items-center gap-2">
-                              <span>{item.name}</span>
-                              <img src="/icons/dropdown.svg" className="h-[9px]" />
+                          <Menu.Button className="flex rounded-full border focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white border-[#000000] px-[0.5em] py-0">
+                            <span className="flex flex-row items-center justify-between gap-10">
+                              <span>
+                                {
+                                  item.option.find((obj) => obj.active === true) === undefined ?
+                                  item.name
+                                  :
+                                  item.option.find((obj) => obj.active === true).country
+                                }
+                              </span>
+                              {
+                                item.option.find((obj) => obj.active === true) === undefined ?
+                                <img src="/icons/dropdown.svg" className="h-[9px]" />
+                                :
+                                <img src={item.option.find((obj) => obj.active === true).flag} className="h-5 rounded shadow-2xl" />
+
+                              }
                             </span>
                             
                           </Menu.Button>

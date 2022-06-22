@@ -22,7 +22,7 @@ export function PromiseTracker({sector, status, icon, promise }) {
                         </HorizontalBadge>
                     </div>
 
-                    <h4 className="font-bold">Promise</h4>
+                    <h4 className="font-bold my-4">Promise</h4>
                     <p className="font-bold">{promise}</p>
                     <span className="w-full border-[2px] border-white my-4"/>
                     <div className="flex flex-col gap-6">
