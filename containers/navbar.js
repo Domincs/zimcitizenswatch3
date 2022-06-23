@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { useRouter } from "next/router";
+import Link from 'next/link';
 
 export function NavbarContainer() {
   const { asPath } = useRouter();
@@ -32,9 +33,11 @@ function classNames(...classes) {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex flex-col leading-none">
-                  <h4 className="text-2xl font-semibold">
-                    CitizensWatch
-                  </h4>
+                  <Link href='/'>
+                    <h4 className="text-2xl font-semibold">
+                      CitizensWatch
+                    </h4>
+                  </Link>
                   <span>{asPath.includes('/zambia') ? 'Zambia': (asPath.includes('/malawi') ? 'Malawi': <></>)}</span>
                 </div>
               </div>

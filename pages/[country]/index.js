@@ -24,7 +24,7 @@ export default function Home({country}) {
             country={capitalize(country)}
             description="Tracking the performance and effectiveness of the government of Malawi based on the pledges made in the manifesto and other important policy pronouncements."
          />
-        <CountrySummaryContainer />
+        <CountrySummaryContainer countFromDate="Jan 1, 2020 12:00:00" />
         <PromiseSummaryContainer statuses={statuses} />
         <PromisesAreaContainer />
       </main>

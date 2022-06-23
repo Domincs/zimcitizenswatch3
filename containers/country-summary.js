@@ -1,17 +1,52 @@
+import { useEffect, useState } from "react";
 import { CountryCountDown } from "../components/country-countdown";
 import { Newsletter } from "./newsletter";
 
-export function CountrySummaryContainer() {
+export function CountrySummaryContainer({countFromDate}) {
+
+    const [days, setDays] = useState(0)
+    const [hours, setHours] = useState(0)
+    const [minutes, setMinutes] = useState(0)
+    const [seconds, setSeconds] = useState(0)
+
+    
+
+    useEffect(() => {
+        const intervalId = setInterval(( ) => {  //assign interval to a variable to clear it.
+          countFrom = new Date(countFromDate).getTime();
+            var now = new Date(),
+                countFrom = new Date(countFrom),
+                timeDifference = (now - countFrom);
+            
+            var secondsInADay = 60 * 60 * 1000 * 24,
+                secondsInAHour = 60 * 60 * 1000;
+            
+            let idays = Math.floor(timeDifference / (secondsInADay) * 1);
+            let ihours = Math.floor((timeDifference % (secondsInADay)) / (secondsInAHour) * 1);
+            let imins = Math.floor(((timeDifference % (secondsInADay)) % (secondsInAHour)) / (60 * 1000) * 1);
+            let isecs = Math.floor((((timeDifference % (secondsInADay)) % (secondsInAHour)) % (60 * 1000)) / 1000 * 1);
+
+            setDays(idays)
+            setHours(ihours)
+            setMinutes(imins)
+            setSeconds(isecs)
+        }, 1000)
+      
+        return () => clearInterval(intervalId); //This is important
+       
+    }, [])
+
+
     return (
         <div className="grid grid-cols-3 mt-[8em]">
             <div className="bg-green-light rounded-tr-[15px] py-[3em] overflow-hidden text-white sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem]">
                 <h2 className="text-[56px] leading-none pt-4">Time Since inauguration</h2>
             </div>
             <div className="flex justify-between py-4 w-full col-span-2 sm:pr-[2rem] pl-6 lg:pr-[4rem] xl:pr-[5rem] 2xl:pr-[6rem]">
-                <CountryCountDown value={235} label="days" />
-                <CountryCountDown value={12} label="hours" />
-                <CountryCountDown value={40} label="minutes" />
-                <CountryCountDown value={23} label="seconds" />
+                <CountryCountDown value={days} label="days" />
+                <CountryCountDown value={hours} label="hours" />
+                <CountryCountDown value={minutes} label="minutes" />
+                <CountryCountDown value={seconds} label="seconds" />
             </div>
             <div className="bg-gray-normal flex flex-col rounded-br-[15px] overflow-hidden sm:pl-[2rem] pr-8 pb-[4em] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem]">
                 <Newsletter />

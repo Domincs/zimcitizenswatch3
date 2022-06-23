@@ -1,4 +1,5 @@
 import { Button } from "../components/button"
+import Link from 'next/link'
 
 export function CountriesContainer() {
     const countries = [
@@ -19,9 +20,11 @@ export function CountriesContainer() {
                             <img src={item.map} alt="map" className="h-[6em]"/>
                         </span>
                         <span className="col-span-2">
-                            <Button>
-                                <span className="flex flex-row gap-4 items-end">VIEW SUMMARY</span>
-                            </Button>
+                            <Link href={item.link}>
+                                <Button>
+                                    <span className="flex flex-row gap-4 items-end">VIEW SUMMARY</span>
+                                </Button>
+                            </Link>
                         </span>
                     </span>
                 ))
