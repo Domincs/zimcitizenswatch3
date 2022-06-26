@@ -1,8 +1,8 @@
-version: '3.3'
+
+version: '3.8'
 services:
-  sivioinstitute:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+  app:
+    build: .
+    image: african-citizenswatch-ui:latest
     ports:
       - '3005:3000'
