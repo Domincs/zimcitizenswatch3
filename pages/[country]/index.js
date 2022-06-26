@@ -1,19 +1,20 @@
-import { SEO } from '../../components/seo';
-import { HeroContainer } from '../../containers/hero';
-import { NavbarContainer } from '../../containers/navbar';
-import { capitalize } from '../../lib/capitalize';
-import { CountrySummaryContainer } from '../../containers/country-summary';
-import { PromiseSummaryContainer } from '../../containers/promise-summary';
-import { PromisesAreaContainer } from '../../components/promises-area';
+import { SEO } from '../../components/seo'
+import axios from 'axios'
+import { HeroContainer } from '../../containers/hero'
+import { NavbarContainer } from '../../containers/navbar'
+import { capitalize } from '../../lib/capitalize'
+import { CountrySummaryContainer } from '../../containers/country-summary'
+import { PromiseSummaryContainer } from '../../containers/promise-summary'
+import { PromisesAreaContainer } from '../../components/promises-area'
 
-export default function Home({country}) {
+export default function Home({country, summary, countFrom}) {
   const statuses = [
-    {label: "Total Promises", value: "340"},
-    {label: "Kept", value: "23"},
-    {label: "Not Commenced", value: "12"},
-    {label: "Modified", value: "234"},
-    {label: "Broken", value: "87"},
-    {label: "Implemented", value: "56"}
+    {label: "Total Promises", value: summary['all']},
+    {label: "Kept", value: summary.kept},
+    {label: "Not Commenced", value: summary.not_commenced},
+    {label: "Modified", value: summary.modified},
+    {label: "Broken", value: summary.broken},
+    {label: "Implemented", value: summary.implemented}
   ]
   return (
     <div className="static mb-[6em] my-4">
@@ -24,9 +25,9 @@ export default function Home({country}) {
             country={capitalize(country)}
             description="Tracking the performance and effectiveness of the government of Malawi based on the pledges made in the manifesto and other important policy pronouncements."
          />
-        <CountrySummaryContainer countFromDate="Jan 1, 2020 12:00:00" />
+        <CountrySummaryContainer countFromDate={countFrom} />
         <PromiseSummaryContainer statuses={statuses} />
-        <PromisesAreaContainer />
+        <PromisesAreaContainer country={country} />
       </main>
     </div>
   );
@@ -34,7 +35,21 @@ export default function Home({country}) {
 
 Home.getInitialProps = async ({query}) => {
   const { country } = query
-  return { country }
+  let apiUrl = ''
+  let countFrom = ''
+  if(country === 'zambia') {
+    apiUrl = process.env.MW_URL
+    countFrom = process.env.MW_INAUGURATION
+  }
+  else if(country === 'malawi') {
+    apiUrl = process.env.ZM_URL
+    countFrom = process.env.ZM_INAUGURATION
+  }
+
+  const summary = (await axios.get(`${apiUrl}/summary`)).data
+  console.log(summary)
+
+  return { country, summary, countFrom }
 }
 
 

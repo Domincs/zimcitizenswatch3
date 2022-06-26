@@ -4,15 +4,19 @@ import { SummaryOfPerformanceContainer } from '../../../containers/summary-of-pe
 import { capitalize } from '../../../lib/capitalize';
 import moment from 'moment'
 import { SectorPromisesContainer } from '../../../containers/sector-promises';
+import { useRouter } from "next/router";
+import axios from 'axios'
 
-export default function Home({sector}) {
+export default function Home({sector, summary}) {
+  const { asPath } = useRouter();
+
   const statuses = [
-    {label: "Total Promises", value: "340"},
-    {label: "Kept", value: "23"},
-    {label: "Not Commenced", value: "12"},
-    {label: "Modified", value: "234"},
-    {label: "Broken", value: "87"},
-    {label: "Implemented", value: "56"}
+    {label: "Total Promises", value: summary.all},
+    {label: "Kept", value: summary.kept},
+    {label: "Not Commenced", value: summary.not_commenced},
+    {label: "Modified", value: summary.modified},
+    {label: "Broken", value: summary.broken},
+    {label: "Implemented", value: summary.implemented}
   ]
 
   return (
@@ -32,8 +36,23 @@ export default function Home({sector}) {
 }
 
 Home.getInitialProps = async ({query}) => {
-  const { sector } = query
-  return { sector }
+  const { country, sector } = query
+  let apiUrl = ''
+  let countFrom = ''
+  if(country === 'zambia') {
+    apiUrl = process.env.MW_URL
+    countFrom = process.env.MW_INAUGURATION
+  }
+  else if(country === 'malawi') {
+    apiUrl = process.env.ZM_URL
+    countFrom = process.env.ZM_INAUGURATION
+  }
+
+  console.log("hello: ", `${apiUrl}/${sector}/summary`)
+
+  const summary = (await axios.get(`${apiUrl}/${sector}/summary`)).data
+
+  return { sector, summary }
 }
 
 

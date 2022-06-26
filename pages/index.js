@@ -4,8 +4,10 @@ import { HeroContainer } from '../containers/hero';
 import { OverallSummaryContainer } from '../containers/overall_summary';
 import { NavbarContainer } from '../containers/navbar';
 import { Background } from '../containers/background';
+import axios from 'axios';
 
-export default function Home({}) {
+
+export default function Home({ summary }) {
   return (
     <div className="static mb-[6em]">
       <SEO title='SIVIO Home' />
@@ -18,15 +20,31 @@ export default function Home({}) {
             link="/#"
          />
         <CountriesContainer />
-        <OverallSummaryContainer />
+        <OverallSummaryContainer summary={summary} />
+        <div className="first"/>
       </main>
     </div>
   );
 }
 
 export async function getStaticProps() {
+  const mwUrl = process.env.MW_URL
+  const zmUrl = process.env.ZM_URL
+  const zwUrl = process.env.ZW_URL
+
+  const malawi = (await axios.get(`${mwUrl}/summary`)).data
+  const zambia = (await axios.get(`${zmUrl}/summary`)).data
+  const zimbabwe = (await axios.get(`${zwUrl}/api/summary`)).data
+
   return {
     props: {
+      summary: { 
+        malawi: { ...malawi, inauguration: process.env.MW_INAUGURATION },
+        zambia: { ...zambia, inauguration: process.env.ZM_INAUGURATION },
+        zimbabwe: { ...zimbabwe, inauguration: process.env.ZW_INAUGURATION }
+
+      }
+      
     },
     revalidate: 60,
   };

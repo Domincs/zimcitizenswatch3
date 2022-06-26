@@ -8,7 +8,7 @@ export function HeroContainer({country, description, link}) {
                 <h1 className="text-[106px] leading-none font-medium">Citizens</h1>
                 <h1 className="text-[106px] leading-none font-medium">Watch</h1>
             </div>
-            <div class="flex flex-col gap-4 py-6 items-end">
+            <div className="flex flex-col gap-4 py-6 items-end">
                 <span className="flex flex-col items-start gap-6 max-w-md">
                     {description}
                     {

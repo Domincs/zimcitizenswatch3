@@ -9,7 +9,11 @@ export function NavbarContainer() {
 
 const navigation = [
   { name: 'Reports', href: '#', type: 'link', active: true },
-  { name: 'Select Country', href: '#', type: 'dropdown', option: [{country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'}, {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'}] }
+  { name: 'Select Country', href: '#', type: 'dropdown', option: [
+    {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
+    {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'},
+    {country: "Zimbabwe", link: "https://zimcitizenswatch.org", active: false, flag: '/flags/zw.svg'}
+  ] }
 ]
 
 function classNames(...classes) {
@@ -46,7 +50,7 @@ function classNames(...classes) {
                   navigation.map((item, idx) => {
                     if(item.type === 'link') {
                       return (
-                        <a className='flex flex-col' key={idx} href={item.href}>
+                        <a className='flex flex-col' key={idx} href={item.href} >
                           <span className="px-2">{item.name}</span>
                           {
                             item.active && <span className="h-[6px] w-full border-radius bg-orange"/>
@@ -96,6 +100,7 @@ function classNames(...classes) {
                                       <a
                                         href={menuItem.link}
                                         className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                        target={ menuItem.link.includes("https://zimcitizenswatch") ? "__blank": "__self" }
                                       >
                                         {menuItem.country}
                                       </a>
