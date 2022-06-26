@@ -6,7 +6,7 @@ export function PromiseHistory({ title, description, link, source, source_date }
             <p >{ description }</p>
             <div className="bg-gray-normal rounded-[20px] tracking-[0.1em] px-4 py-1 flex flex-row gap-3">
                 <img src="/icons/link.svg" />
-                <a href={link} className="underline font-semibold" target="_blank" rel="noreferrer">
+                <a href={link} className="underline font-semibold" target={ link.includes("https://zimcitizenswatch") ? "_blank": "_self" } rel= { link.includes("https://zimcitizenswatch") ? "noreferrer": "" }>
                     { source }
                 </a>
                 <span className="base-font">Published: { source_date }</span>

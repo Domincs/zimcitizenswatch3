@@ -10,18 +10,18 @@ export const SEO = ({
     <meta name='description' content={description} />
     <meta
       name='keywords'
-      content='sivio institute, think tank, zimbabwe think tanks, citizens, public policy'
+      content='african citizens watch, policy tracker, zambia policy tracker, malawi policy tracker, zimbabwe policy tracker'
     />
-    <meta name='author' content='Joseph Mukorivo' />
+    <meta name='author' content='Dominic Chingoma' />
     <meta name='image' content={image} />
-    <meta name='og:title' content={`SIVIO Institute: ${title}`} />
+    <meta name='og:title' content={`AfricanCitizensWatch: ${title}`} />
     <meta name='og:description' content={description} />
     <meta name='og:image' content={image} />
-    <meta name='og:url' content='https://sivioinstitute.org' />
-    <meta name='og:site_name' content={`SIVIO Institute: ${title}`} />
+    <meta name='og:url' content='https://africancitizenswatch.org' />
+    <meta name='og:site_name' content={`AfricanCitizensWatch: ${title}`} />
     <meta name='og:type' content='website' />
     <meta name='twitter:card' content='summary' />
-    <meta name='twitter:title' content={`SIVIO Institute: ${title}`} />
+    <meta name='twitter:title' content={`AfricanCitizensWatch: ${title}`} />
     <meta name='twitter:description' content={description} />
     <meta name='twitter:image' content={image} />
     <meta name='twitter:site' content='@sivioinstitute' />
