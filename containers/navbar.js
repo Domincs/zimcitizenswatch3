@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export function NavbarContainer() {
   const { asPath } = useRouter();
-  console.log(asPath)
+
 
 const navigation = [
   { name: 'Reports', href: '#', type: 'link', active: true },
