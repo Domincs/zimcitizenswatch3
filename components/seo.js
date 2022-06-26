@@ -26,6 +26,6 @@ export const SEO = ({
     <meta name='twitter:image' content={image} />
     <meta name='twitter:site' content='@sivioinstitute' />
     <meta name='twitter:creator' content='@sivioinstitute' />
-    <title>SIVIO Institute: {title}</title>
+    <title>AfricanCitizensWatch | {title}</title>
   </Head>
 );
