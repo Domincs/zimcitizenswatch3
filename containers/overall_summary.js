@@ -30,7 +30,7 @@ export function OverallSummaryContainer({ summary }) {
                     <img src={items.find((obj) => obj.active === true).map} className="h-[16em] mb-8 pr-4" />
                     {/* <a className="rounded-full px-8 py-2 leading-none tracking-[.1em] text-xs uppercase font-serif text-white bg-orange" href={items.find((obj) => obj.active === true).link} target={items.find((obj) => obj.active === true).target}> */}
                     <Button color="orange">
-                        <a className="flex flex-row gap-4 text-[10px]" href={items.find((obj) => obj.active === true).link} target={items.find((obj) => obj.active === true).target} rel={ items.find((obj) => obj.active === true).link.includes("https://zimcitizenswatch") ? "noreferrer": "" }>
+                        <a className="flex flex-row gap-4 text-[10px]" href={items.find((obj) => obj.active === true).link} target={items.find((obj) => obj.active === true).target} {...(items.find((obj) => obj.active === true).link.includes("https://zimcitizenswatch") && { rel: "noreferrer" })}>
                         <span>Visit {items.find((obj) => obj.active === true).name} Tracker</span><img src="/icons/right-arrow-white.svg" className="h-[0.7em]" />
                         </a>
                     </Button>
