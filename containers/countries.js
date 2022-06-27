@@ -5,9 +5,9 @@ export function CountriesContainer() {
 
 
     const countries = [
-        {country: "Malawi", link:"/malawi", flag: "flags/mw.svg", map: "maps/mw.svg", target="_self"},
-        {country: "Zambia", link:"/zambia", flag: "flags/zm.svg", map: "maps/zm.svg", target="_self"},
-        {country: "Zimbabwe", link:"https://zimcitizenswatch.org", flag: "flags/zw.svg", map: "maps/zw.svg", target="_blank"}
+        {country: "Malawi", link:"/malawi", flag: "flags/mw.svg", map: "maps/mw.svg", target:"_self"},
+        {country: "Zambia", link:"/zambia", flag: "flags/zm.svg", map: "maps/zm.svg", target:"_self"},
+        {country: "Zimbabwe", link:"https://zimcitizenswatch.org", flag: "flags/zw.svg", map: "maps/zw.svg", target:"_blank"}
     ]
     return(
         <div className="relative grid grid-cols-3 divide-x divide-gray-divider box-shadow container border-radius m-auto z-10 bg-white">
