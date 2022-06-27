@@ -5,9 +5,9 @@ export function CountriesContainer() {
 
 
     const countries = [
-        {country: "Malawi", link:"/malawi", flag: "flags/mw.svg", map: "maps/mw.svg"},
-        {country: "Zambia", link:"/zambia", flag: "flags/zm.svg", map: "maps/zm.svg"},
-        {country: "Zimbabwe", link:"/zimbabwe", flag: "flags/zw.svg", map: "maps/zw.svg"}
+        {country: "Malawi", link:"/malawi", flag: "flags/mw.svg", map: "maps/mw.svg", target="_self"},
+        {country: "Zambia", link:"/zambia", flag: "flags/zm.svg", map: "maps/zm.svg", target="_self"},
+        {country: "Zimbabwe", link:"https://zimcitizenswatch.org", flag: "flags/zw.svg", map: "maps/zw.svg", target="_blank"}
     ]
     return(
         <div className="relative grid grid-cols-3 divide-x divide-gray-divider box-shadow container border-radius m-auto z-10 bg-white">
@@ -24,7 +24,9 @@ export function CountriesContainer() {
                         <span className="col-span-2">
                             <Link href={item.link}>
                                 <Button>
-                                    <span className="flex flex-row gap-4 items-end">VIEW SUMMARY</span>
+                                <a className="flex flex-row gap-4 text-[10px]" href={item.link} target={item.target} {...(item.target === '_blank' && { rel: "noreferrer" })}>
+                                VIEW SUMMARY
+                                </a>
                                 </Button>
                             </Link>
                         </span>
