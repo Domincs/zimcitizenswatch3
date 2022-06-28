@@ -7,7 +7,7 @@ import { CountrySummaryContainer } from '../../containers/country-summary'
 import { PromiseSummaryContainer } from '../../containers/promise-summary'
 import { PromisesAreaContainer } from '../../components/promises-area'
 
-export default function Home({country, summary, countFrom}) {
+export default function Home({country, summary, countFrom, economy, governance, corruption, climate_change, social_service}) {
   const statuses = [
     {label: "Total Promises", value: summary['all']},
     {label: "Kept", value: summary.kept},
@@ -27,7 +27,7 @@ export default function Home({country, summary, countFrom}) {
          />
         <CountrySummaryContainer countFromDate={countFrom} />
         <PromiseSummaryContainer statuses={statuses} />
-        <PromisesAreaContainer country={country} />
+        <PromisesAreaContainer country={country} economy={economy} governance={governance} corruption={corruption} climate_change={climate_change} social_service={social_service} />
       </main>
     </div>
   );
@@ -47,9 +47,14 @@ Home.getInitialProps = async ({query}) => {
   }
 
   const summary = (await axios.get(`${apiUrl}/summary`)).data
-  console.log(summary)
 
-  return { country, summary, countFrom }
+  const economy = (await axios.get(`${apiUrl}/economy/summary`)).data
+  const governance = (await axios.get(`${apiUrl}/governance/summary`)).data
+  const corruption = (await axios.get(`${apiUrl}/corruption/summary`)).data
+  const climate_change = (await axios.get(`${apiUrl}/climate_change/summary`)).data
+  const social_service = (await axios.get(`${apiUrl}/social_service/summary`)).data
+
+  return { country, summary, countFrom, economy, governance, corruption, climate_change, social_service }
 }
 
 

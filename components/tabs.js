@@ -12,7 +12,7 @@ export function Tabs({tabs, updateTab, ...rest}) {
                                 e.preventDefault()
                                 updateTab(idx)
                                 }}>
-                                <span className="mb-2">{item.label}</span>
+                                <span className="mb-2 md:mb-1">{item.label}</span>
                                 {
                                     item.active && <span className="transition delay-300 duration-300 ease-in-out rounded h-[6px] w-full bg-green-light" />
                                 }

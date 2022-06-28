@@ -10,8 +10,6 @@ import axios from 'axios'
 
 export default function Home({sector, summary, promises}) {
   const { asPath } = useRouter();
-  console.log(asPath)
-
   const [keyNodes, setKeyNodes] = useState([{ active: true, text: "All categories" }])
 
   useEffect(() => {

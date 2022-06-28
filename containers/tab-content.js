@@ -1,6 +1,19 @@
+import { Bar } from "../charts/bar";
 import { ButtonLink } from "../components/button-link";
 
-export function TabContent({content, link}) {
+export function TabContent({content, link, sector, summary }) {
+    const data = [{
+        sector: {sector},
+        data: [
+          { name: 'Kept', y: summary.kept, color: 'var(--sivio-kept)' },
+          { name: 'Not Commenced', y: summary.not_commenced, color: 'var(--sivio-not-commenced)' },
+          { name: 'Modified', y: summary.modified, color: 'var(--sivio-modified)' },
+          { name: 'Broken', y: summary.broken, color: 'var(--sivio-broken)' },
+          { name: 'Implemented', y: summary.implemented, color: 'var(--sivio-implemented)' }
+        ],
+    }]
+
+    
     return(
         <div className="flex flex-col md:flex-row gap-4">
             <div className="basis-full md:basis-2/5 py-6 flex flex-col justify-around">
@@ -12,7 +25,12 @@ export function TabContent({content, link}) {
                 </ButtonLink>
             </div>
             <div className="basis-full md:basis-3/5 py-6 px-4">
-                <img src="/icons/placeholder.svg" className="w-full max-w-md" />
+                <Bar
+                    data={data}
+                    title={sector}
+                    pointWidth={30}
+                    yAxisTitle='Total Promises'
+                />
             </div>
         </div>
     )

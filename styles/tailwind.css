@@ -4,6 +4,12 @@
 
 :root {
     --sivio-nprogress-color: #7fbd42;
+      /* Main Colors */
+      --sivio-implemented: #678C13;
+      --sivio-kept: #7FBD42;
+      --sivio-not-commenced: #323D43;
+      --sivio-modified: #F15C27;
+      --sivio-broken: #CC0202;
   }
   
 
