@@ -28,7 +28,6 @@ export function OverallSummaryContainer({ summary }) {
                 </div>
                 <div className="basis-2/3">
                     <img src={items.find((obj) => obj.active === true).map} className="h-[16em] mb-8 pr-4" />
-                    {/* <a className="rounded-full px-8 py-2 leading-none tracking-[.1em] text-xs uppercase font-serif text-white bg-orange" href={items.find((obj) => obj.active === true).link} target={items.find((obj) => obj.active === true).target}> */}
                     <Button color="orange">
                         <a className="flex flex-row gap-4 text-[10px]" href={items.find((obj) => obj.active === true).link} target={items.find((obj) => obj.active === true).target} {...(items.find((obj) => obj.active === true).target === '_blank' && { rel: "noreferrer" })}>
                         <span>Visit {items.find((obj) => obj.active === true).name} Tracker</span><img src="/icons/right-arrow-white.svg" className="h-[0.7em]" />
@@ -39,7 +38,7 @@ export function OverallSummaryContainer({ summary }) {
                 </div>
             </div>
 
-            <div className="col-span-2 flex flex-row flex-nowrap overflow-scroll gap-[6em]" onScroll={handleScroll}>
+            <div className="col-span-2 flex flex-row flex-nowrap overflow-x-scroll gap-[6em]" onScroll={handleScroll}>
                 {
                     Object.keys(summary).map((item, key) => (
                         <ScrollSection key={key} country={capitalize(item)} summary={summary[item]} />

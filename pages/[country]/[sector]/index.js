@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { SEO } from '../../../components/seo';
 import { NavbarContainer } from '../../../containers/navbar';
 import { SummaryOfPerformanceContainer } from '../../../containers/summary-of-performance';
@@ -7,8 +8,25 @@ import { SectorPromisesContainer } from '../../../containers/sector-promises';
 import { useRouter } from "next/router";
 import axios from 'axios'
 
-export default function Home({sector, summary}) {
+export default function Home({sector, summary, promises}) {
   const { asPath } = useRouter();
+  console.log(asPath)
+
+  const [keyNodes, setKeyNodes] = useState([{ active: true, text: "All categories" }])
+
+  useEffect(() => {
+    const nodes = promises.map(obj => {
+      return obj.keynode_name
+    })
+
+    let nodesList =  Array.from(new Set(nodes))
+
+    const listItems = nodesList.map((item) => {
+      return {active: false, text: item }
+    })
+
+    setKeyNodes([...keyNodes, ...listItems])
+  }, [])
 
   const statuses = [
     {label: "Total Promises", value: summary.all},
@@ -28,7 +46,7 @@ export default function Home({sector, summary}) {
           <h1 className="text-[106px] leading-none">{capitalize(sector)}</h1>
         </div>
         <SummaryOfPerformanceContainer date={moment().format("LL")} statuses={statuses} />
-        <SectorPromisesContainer />
+        <SectorPromisesContainer keyNodes={keyNodes} promises={promises} path={asPath} />
         
       </main>
     </div>
@@ -52,7 +70,9 @@ Home.getInitialProps = async ({query}) => {
 
   const summary = (await axios.get(`${apiUrl}/${sector}/summary`)).data
 
-  return { sector, summary }
+  const promises = (await axios.get(`${apiUrl}/${sector}/promises`)).data
+
+  return { sector, summary, promises }
 }
 
 

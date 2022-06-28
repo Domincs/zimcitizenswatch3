@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { useRouter } from "next/router";
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function NavbarContainer() {
   const { asPath } = useRouter();
@@ -20,7 +21,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
     return(
-    <Disclosure as="nav" className="bg-gray-800 relative z-50">
+    <Disclosure as="nav" className="bg-gray-800 relative z-50 text-[16px] pt-3">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -29,32 +30,45 @@ function classNames(...classes) {
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   {open ? (
-                    <span>Menu</span>
+                    <span>CitizensWatch</span>
                   ) : (
-                    <span>Menu</span>
+                    <span>CitizensWatch</span>
                   )}
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex-shrink-0 flex flex-col leading-none">
-                  <Link href='/'>
-                    <h4 className="text-2xl font-semibold">
-                      CitizensWatch
-                    </h4>
-                  </Link>
-                  <span>{asPath.includes('/zambia') ? 'Zambia': (asPath.includes('/malawi') ? 'Malawi': <></>)}</span>
+                <div className="flex-shrink-0 flex flex-row gap-2 items-center">
+                    <a target="_blank" href="https://www.sivioinstitute.org">
+                      <Image src="/icons/logo.svg" height={42} width={93} />
+                    </a>
+                    <span className="h-full w-[1px] bg-black"/>
+                    <span className="flex flex-col leading-none py-1">
+                      <Link href="/">
+                        <h4 className="font-semibold leading-none cursor-pointer">
+                          CitizensWatch
+                        </h4>
+                      </Link>
+                      
+                      <span className="text-[20px] leading-none">{asPath.includes('/zambia') ? 'Zambia': (asPath.includes('/malawi') ? 'Malawi': 'Home')}</span>
+                    </span>
+                  
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-4">
+                {
+                  asPath !== "/" && 
+                  <a className='flex flex-col' key="home" href="/" >
+                    <span className="px-2">CitizensWatch Home</span>
+                  </a>
+                }
+                
                 {
                   navigation.map((item, idx) => {
                     if(item.type === 'link') {
                       return (
                         <a className='flex flex-col' key={idx} href={item.href} >
                           <span className="px-2">{item.name}</span>
-                          {
-                            item.active && <span className="h-[6px] w-full border-radius bg-orange"/>
-                          }
+                          <span className="h-[6px] w-full border-radius bg-orange hidden"/>
                           
                         </a>
                       

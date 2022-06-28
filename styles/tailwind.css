@@ -208,6 +208,10 @@ p, a, .base-font {
   @apply text-[16px];
 }
 
+h4 {
+  @apply text-[32px];
+}
+
 body {
   @apply dark:bg-gray-deeper dark:text-gray-darker;
 }

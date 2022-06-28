@@ -1,6 +1,8 @@
 import { HorizontalBadge } from "../components/horizontal-badge";
 import { PromiseHistory } from "../components/promise-history";
 import { RoundedButton } from "../components/rounded-button";
+import { normalize } from "../lib/normalize";
+import moment from 'moment'
 
 export function PromiseTracker({sector, status, icon, promise }) {
     return (
@@ -11,11 +13,11 @@ export function PromiseTracker({sector, status, icon, promise }) {
                         <HorizontalBadge background="white">
                         <span className="text-black flex items-center">{sector}</span>
                         </HorizontalBadge>
-                        <HorizontalBadge background="green-light">
+                        <HorizontalBadge background={`status-${status}`}>
                         <div className="grid grid-cols-2 text-white flex items-center">
                             <span className="">Status:</span>
                                 <div className="flex flex-row items-center">
-                                    <span className="font-semibold flex">{status}</span>
+                                    <span className="font-semibold flex">{normalize(status)}</span>
                                     <img src={icon} className="h-[25px]" />
                                 </div>
                         </div>
@@ -23,25 +25,21 @@ export function PromiseTracker({sector, status, icon, promise }) {
                     </div>
 
                     <h4 className="font-bold my-4">Promise</h4>
-                    <p className="font-bold">{promise}</p>
+                    <p className="font-bold">{promise[0].promise_title}</p>
                     <span className="w-full border-[2px] border-white my-4"/>
                     <div className="flex flex-col gap-6">
                         <h4>Promise History</h4>
-                        <PromiseHistory 
-                            title="Pilot Phase Of The National Fuel Management System"
-                            description="Piloting of the National Fuel Management System developed by the Harare Institute of Technology, with support from the Zimbabwe Energy Regulatory Authority (ZERA). Pilot phase of the National Fuel Management System has been completed, and the system has been proved to be ready for full implementation."
-                            link="/"
-                            source="Herald"
-                            source_date="22 Aug 2021"
-                        />
-
-                        <PromiseHistory 
-                            title="Pilot Phase Of The National Fuel Management System"
-                            description="Piloting of the National Fuel Management System developed by the Harare Institute of Technology, with support from the Zimbabwe Energy Regulatory Authority (ZERA). Pilot phase of the National Fuel Management System has been completed, and the system has been proved to be ready for full implementation."
-                            link="/"
-                            source="Herald"
-                            source_date="22 Aug 2021"
-                        />
+                        {
+                            promise.map((item, idx) => (
+                                <PromiseHistory 
+                                    title={item.action_title}
+                                    description={item.action_description}
+                                    link={item.source_url}
+                                    source={item.source_name}
+                                    source_date={moment(item.source_date).format("LL")}
+                                />
+                            ))
+                        }
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+
 import { useEffect , useState, } from "react";
 import { CountdownItem } from "../components/countdown";
 import { SummaryGrid } from "./summary-grid";
@@ -48,10 +49,10 @@ export function ScrollSection({country, summary}) {
 
     return(
         <div>
-            <div className={`flex flex-row flex-nowrap overflow-scroll gap-[6em] ${country}`}>
+            <div className={`flex flex-row flex-nowrap gap-[6em] ${country}`}>
                 <span className="flex flex-col w-fit">
-                    <h2 className="text-4xl uppercase w-max">Time Since Inauguration</h2>
-                    <span className="flex justify-between py-4 w-full">
+                    <h2 className="text-4xl uppercase w-max mb-6">Time Since Inauguration</h2>
+                    <span className="flex justify-between w-full">
                         <CountdownItem value={days} label="days" />
                         <CountdownItem value={hours} label="hours" />
                         <CountdownItem value={minutes} label="minutes" />
@@ -59,14 +60,14 @@ export function ScrollSection({country, summary}) {
                     </span>
                 </span>
 
-                <div className="flex flex-col min-w-[40em] my-12">
-                    <h2 className="text-4xl leading-none uppercase">Summary of Promises</h2>
+                <div className="flex flex-col min-w-[40em]">
+                    <h2 className="text-4xl uppercase mb-6">Summary of Promises</h2>
                     <SummaryGrid sectors={sectors} />
                 </div>
                 <div className="flex w-fit">
-                    <span className="flex h-fit my-0 mx-[8em] w-max origin-top-left rotate-90 flex-row bg-orange px-6 py-10">
-                        <span className="text-2xl uppercase leading-none tracking-[0.16em]">Visit {country} tracker</span>
-                        <img src="/icons/link.svg" alt="link" />
+                    <span className="flex items-center h-fit my-0 mx-[8em] w-max origin-top-left rotate-90 flex-row bg-orange px-6 py-6 gap-4">
+                        <span className="text-[18px] sans-serif uppercase leading-none tracking-[0.16em]">Visit {country} tracker</span>
+                        <img src="/icons/link-arrow.svg" alt="link" />
                     </span>
 
                 </div>
