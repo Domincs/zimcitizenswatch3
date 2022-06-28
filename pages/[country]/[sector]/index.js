@@ -38,10 +38,10 @@ export default function Home({sector, summary, promises}) {
   ]
 
   return (
-    <div className="static mb-[6em]">
+    <div className="static mb-[6em] px-4 md:px-0">
       <SEO title='AfricanCitizensWatch' />
       <NavbarContainer />
-      <main>
+      <main className="px-6 md:px-0">
         <div className="container m-auto my-12">
           <h1 className="text-[106px] leading-none">{capitalize(sector)}</h1>
         </div>

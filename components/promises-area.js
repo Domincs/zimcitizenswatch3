@@ -25,7 +25,7 @@ export const PromisesAreaContainer = ({ country }) => {
     }
     
     return (
-        <div className="flex flex-col container m-auto">
+        <div className="flex flex-col container m-auto px-6 md:px-0">
             <h2 className="text-[56px] my-4">Promise Area</h2>
             <Tabs tabs={tabsList} updateTab={updateTab} />
 

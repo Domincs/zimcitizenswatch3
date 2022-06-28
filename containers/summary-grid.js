@@ -5,7 +5,7 @@ export function SummaryGrid({sectors}) {
                 sectors.map((item, idx) => (
                     <div key={idx} className="border-[0.5px] border-[#0000001a] grid grid-col min-h-[10em] place-content-center items-center">
                         <span className="text-[56px] text-center leading-none font-medium">{item.value}</span>
-                        <span className="uppercase text-center tracking-[0.16em] font-serif">{item.label}</span>
+                        <span className="text-[18px] uppercase text-center tracking-[0.16em]">{item.label}</span>
                     </div>
                 ))
             }

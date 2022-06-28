@@ -30,14 +30,16 @@ function classNames(...classes) {
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   {open ? (
-                    <span>CitizensWatch</span>
+                    <span>
+                      <Image src="/icons/menu.svg" height={26} width={21} />
+                    </span>
                   ) : (
-                    <span>CitizensWatch</span>
+                    <span><Image src="/icons/menu.svg" height={26} width={21} /></span>
                   )}
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex-shrink-0 flex flex-row gap-2 items-center">
+                <div className="flex-shrink-0 flex flex-row gap-2 items-center hidden md:flex">
                     <a target="_blank" href="https://www.sivioinstitute.org">
                       <Image src="/icons/logo.svg" height={42} width={93} />
                     </a>

@@ -5,8 +5,8 @@ import moment from 'moment';
 export function SectorPromisesContainer ({ keyNodes, promises, path }) {
 
     return (
-        <div className="grid grid-cols-3">
-            <div className="col-span-2 bg-gray-light py-6 rounded-r-[40px] ">
+        <div className="md:grid flex flex-col-reverse md:grid-cols-3">
+            <div className="col-span-1 md:col-span-2 bg-gray-light py-6 rounded-r-[40px] ">
                 <div className="pl-1 sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem] pr-6">
                      <h2 className="text-[32px] my-8">Arranged in order of latest update</h2>
                     {

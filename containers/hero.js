@@ -2,7 +2,7 @@ import { Button } from "../components/button";
 
 export function HeroContainer({country, description, link, ...rest}) {
     return(
-        <div className="grid min-h-[35em] h-full grid-cols-2 content-center items-end container m-auto relative mb-[3em] pb-[1em]" {...rest}>
+        <div className="grid min-h-[35em] h-full grid-cols-1 md:grid-cols-2 content-center items-end container m-auto relative mb-[3em] pb-[1em] px-6 md:px-0" {...rest}>
             <div>
                 <h1 className="text-[106px] leading-none font-medium">{country}</h1>
                 <h1 className="text-[106px] leading-none font-medium">Citizens</h1>

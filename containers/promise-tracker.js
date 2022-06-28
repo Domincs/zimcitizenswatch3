@@ -32,6 +32,7 @@ export function PromiseTracker({sector, status, icon, promise }) {
                         {
                             promise.map((item, idx) => (
                                 <PromiseHistory 
+                                    key={idx}
                                     title={item.action_title}
                                     description={item.action_description}
                                     link={item.source_url}
