@@ -38,7 +38,7 @@ export function CountrySummaryContainer({countFromDate}) {
 
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 mt-[8em]">
+        <div className="grid grid-cols-1 md:grid-cols-3 mt-[-3em]">
             <div className="bg-green-light rounded-tr-[15px] py-[3em] overflow-hidden text-white sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem]">
                 <h2 className="text-[56px] leading-none pt-4">Time Since inauguration</h2>
             </div>

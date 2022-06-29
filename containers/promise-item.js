@@ -1,5 +1,6 @@
 import { ButtonLink } from "../components/button-link";
 import { StatusBadge } from "../components/status-badge";
+import { normalize } from "../lib/normalize";
 
 export function PromiseItemContainer({status, promise, date, color, link, icon}) {
     return (
@@ -7,14 +8,14 @@ export function PromiseItemContainer({status, promise, date, color, link, icon})
             <div className=" flex flex-row">
                 <StatusBadge color={color} icon={icon} />
                 <div className="flex flex-col px-4">
-                    <span className="uppercase text-[16px] font-semibold">{status}</span>
+                    <span className="uppercase text-[16px] font-semibold">{normalize(status)}</span>
                     <span className="uppercase text-[16px] font-normal text-gray-divider">{date}</span>
                 </div>
             </div>
             <div className="col-span-2 flex flex-col px-6 justify-between">
                 <span>{promise}</span>
                 <span className="w-fit border-b leading-loose">
-                    <ButtonLink target="_blank" link={link}>
+                    <ButtonLink link={link}>
                         Read More <img src="/icons/right-arrow-black.svg" />
                     </ButtonLink>
                 </span>

@@ -1,12 +1,16 @@
-import Link from "next/link";
-import { useState } from "react";
+
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "../components/button";
 import { VerticalStepper } from "../components/vertifcal-stepper";
 import { capitalize } from "../lib/capitalize";
 import { ScrollSection } from "./scroll-section";
 
 export function OverallSummaryContainer({ summary }) {
+    const ref = useRef(null);
     const [scrolled, setScrolled] = useState(0)
+
     const items = [
         { name: "Malawi", active: scrolled < 33.3 , link: '/malawi', target: '_self', map: "/maps/mw.svg" },
         { name: "Zambia", active: scrolled > 33.3 && scrolled < 66.6, link: '/zambia', target: '_self', map: "/maps/zm.svg" },
@@ -19,10 +23,55 @@ export function OverallSummaryContainer({ summary }) {
         var scrolled = (winScroll / height) * 100
         setScrolled(scrolled)
 
-      }
+    }
+
+    useEffect(() => {
+        const element = ref.current
+        gsap.registerPlugin(ScrollTrigger)
+        let tl = gsap.timeline({});
+        
+        let sections = gsap.utils.toArray(".panel");
+
+
+        tl.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            
+            onStart: (e)=>{
+                console.log("scolling")
+            },
+            scrollTrigger: {
+              trigger: ".horizontal-scroll",
+              start: 'bottom bottom',
+              pin: true,
+              scrub: 0.1,
+            //   snap: 1 / (sections.length - 1),
+              // base vertical scrolling on how wide the container is so it feels more natural.
+              end: "+=3500"
+            }
+        })
+        .to('.countries-container', {
+            position: "sticky",
+            zIndex: 1500,
+            ease: "none",
+            top: 0,
+            onStart: ()=>{
+                console.log("Started")
+            },
+            scrollTrigger: {
+              trigger: ".horizontal-scroll",
+              start: 'bottom bottom',
+              pin: true,
+              scrub: 1,
+              end: "+=3500",
+              markers: true,
+            }
+        })
+    })
+
     return(
-        <div className="grid grid-cols-3 container m-auto mt-[8em]">
-            <div className="flex flex-row">
+        <div className="grid grid-cols-3 container m-auto mt-[8em] horizontal-scroll overflow-hidden">
+            <div className="flex flex-row bg-white z-[1000]">
                 <div className="basis-1/3">
                     <VerticalStepper items={items} />
                 </div>
@@ -33,15 +82,14 @@ export function OverallSummaryContainer({ summary }) {
                         <span>Visit {items.find((obj) => obj.active === true).name} Tracker</span><img src="/icons/right-arrow-white.svg" className="h-[0.7em]" />
                         </a>
                     </Button>
-                    
-                    
                 </div>
             </div>
 
-            <div className="col-span-2 flex flex-row flex-nowrap overflow-x-scroll gap-[6em]" onScroll={handleScroll}>
+            <div className="col-span-2 flex flex-row flex-nowrap gap-[6em] px-[18em]" onScroll={handleScroll}>
+            
                 {
                     Object.keys(summary).map((item, key) => (
-                        <ScrollSection key={key} country={capitalize(item)} summary={summary[item]} />
+                        <ScrollSection key={key} country={capitalize(item)} summary={summary[item]} additional_classes="panel z-[-1]" link={items.find((obj) => obj.name === capitalize(item)).link} target={items.find((obj) => obj.name === capitalize(item)).target} />
                     ))
                 }
                 

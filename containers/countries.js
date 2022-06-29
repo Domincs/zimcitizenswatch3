@@ -9,7 +9,7 @@ export function CountriesContainer() {
         {country: "Zimbabwe", link:"https://zimcitizenswatch.org", flag: "flags/zw.svg", map: "maps/zw.svg", target:"_blank"}
     ]
     return(
-        <div className="relative grid grid-cols-1 md:grid-cols-3 divide-y md:divide-x divide-gray-divider box-shadow container border-radius m-auto z-10 bg-white">
+        <div className="relative grid grid-cols-3 divide-x divide-gray-divider box-shadow container border-radius m-auto z-10 bg-white countries-container flex flex-nowrap">
             {
                 countries.map((item, idx) => (
                     <span className={`grid grid-cols-2 place-content-center justify-items-center gap-4 py-6`} key={idx}>

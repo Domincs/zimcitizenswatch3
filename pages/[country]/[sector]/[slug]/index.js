@@ -16,7 +16,7 @@ export default function Home({ promise, sector }) {
           <Breadcrumb />
         </div>
         <PromiseTracker 
-          icon="/icons/kept.svg" 
+          icon={`/icons/${promise[0].status}.svg`} 
           sector={capitalize(sector)}
           promise={promise}
         />
@@ -28,12 +28,13 @@ export default function Home({ promise, sector }) {
 Home.getInitialProps = async ({query}) => {
   const { slug, sector, country } = query
   let apiUrl = ''
-  if(country === 'zambia') {
+  if(country === 'malawi') {
     apiUrl = process.env.MW_URL
   }
-  else if(country === 'malawi') {
+  else if(country === 'zambia') {
     apiUrl = process.env.ZM_URL
   }
+
   const promise = (await axios.get(`${apiUrl}/${sector}/promises/${slug}`)).data
   return { promise, sector }
 }

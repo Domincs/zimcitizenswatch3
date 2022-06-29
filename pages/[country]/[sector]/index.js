@@ -55,11 +55,11 @@ Home.getInitialProps = async ({query}) => {
   const { country, sector } = query
   let apiUrl = ''
   let countFrom = ''
-  if(country === 'zambia') {
+  if(country === 'malawi') {
     apiUrl = process.env.MW_URL
     countFrom = process.env.MW_INAUGURATION
   }
-  else if(country === 'malawi') {
+  else if(country === 'zambia') {
     apiUrl = process.env.ZM_URL
     countFrom = process.env.ZM_INAUGURATION
   }

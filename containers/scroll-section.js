@@ -4,7 +4,7 @@ import { CountdownItem } from "../components/countdown";
 import { SummaryGrid } from "./summary-grid";
 
 
-export function ScrollSection({country, summary}) {
+export function ScrollSection({country, summary, additional_classes, link, target}) {
 
     const [days, setDays] = useState(0)
     const [hours, setHours] = useState(0)
@@ -49,8 +49,8 @@ export function ScrollSection({country, summary}) {
 
     return(
         <div>
-            <div className={`flex flex-row flex-nowrap gap-[6em] ${country}`}>
-                <span className="flex flex-col w-fit">
+            <div className={`flex flex-row overflow-x-scroll flex-nowrap pb-[2em] ${country} ${additional_classes} ml-[-18em]`}>
+                <span className="flex flex-col w-fit mr-[4em]">
                     <h2 className="text-4xl uppercase w-max mb-6">Time Since Inauguration</h2>
                     <span className="flex justify-between w-full">
                         <CountdownItem value={days} label="days" />
@@ -65,10 +65,10 @@ export function ScrollSection({country, summary}) {
                     <SummaryGrid sectors={sectors} />
                 </div>
                 <div className="flex w-fit">
-                    <span className="flex items-center h-fit my-0 mx-[8em] w-max origin-top-left rotate-90 flex-row bg-orange px-6 py-6 gap-4">
+                    <a href={link} target={target} className="flex items-center h-fit my-0 mx-[8em] w-max origin-top-left rotate-90 flex-row bg-orange px-6 py-6 gap-4">
                         <span className="text-[18px] sans-serif uppercase leading-none tracking-[0.16em]">Visit {country} tracker</span>
                         <img src="/icons/link-arrow.svg" alt="link" />
-                    </span>
+                    </a>
 
                 </div>
                 

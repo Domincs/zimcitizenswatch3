@@ -33,7 +33,7 @@ module.exports = {
       status: {
         implemented: '#678C13',
         kept: '#7FBD42',
-        not_commenced: '#323D43',
+        notcommenced: '#323D43',
         modified: '#F15C27',
         broken: '#CC0202'
       }

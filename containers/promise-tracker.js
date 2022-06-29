@@ -4,7 +4,7 @@ import { RoundedButton } from "../components/rounded-button";
 import { normalize } from "../lib/normalize";
 import moment from 'moment'
 
-export function PromiseTracker({sector, status, icon, promise }) {
+export function PromiseTracker({sector, icon, promise }) {
     return (
         <div className="grid grid-cols-3">
             <div className="col-span-2 bg-gray-light py-6 rounded-r-[40px] ">
@@ -13,11 +13,11 @@ export function PromiseTracker({sector, status, icon, promise }) {
                         <HorizontalBadge background="white">
                         <span className="text-black flex items-center">{sector}</span>
                         </HorizontalBadge>
-                        <HorizontalBadge background={`status-${status}`}>
+                        <HorizontalBadge background={`status-${promise[0].status}`}>
                         <div className="grid grid-cols-2 text-white flex items-center">
                             <span className="">Status:</span>
                                 <div className="flex flex-row items-center">
-                                    <span className="font-semibold flex">{normalize(status)}</span>
+                                    <span className="font-semibold flex">{normalize(promise[0].status)}</span>
                                     <img src={icon} className="h-[25px]" />
                                 </div>
                         </div>

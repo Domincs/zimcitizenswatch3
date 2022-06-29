@@ -7,20 +7,20 @@ export function SectorPromisesContainer ({ keyNodes, promises, path }) {
     return (
         <div className="md:grid flex flex-col-reverse md:grid-cols-3">
             <div className="col-span-1 md:col-span-2 bg-gray-light py-6 rounded-r-[40px] ">
-                <div className="pl-1 sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem] pr-6">
+                <div className="pl-1 sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem] pr-6 flex flex-col gap-6">
                      <h2 className="text-[32px] my-8">Arranged in order of latest update</h2>
                     {
                         promises.map((item, idx) => {
-                            let color = `status-${item.promise_state}`
+                            let color = `status-${item.promise_state.replace('_', '')}`
                             
                             return (<PromiseItemContainer 
                                 key={idx} 
                                 status={item.promise_state} 
                                 promise={item.promise_title} 
                                 color={color} 
-                                icon="/icons/implemented.svg"
-                                date={moment(item.source_date).format('DD-MMMM-YYYY')}
-                                link={`${path}/${slug}`}
+                                icon={`/icons/${item.promise_state}.svg`}
+                                date={item.source_date && moment(item.source_date).format('DD-MMMM-YYYY')}
+                                link={`${path}/${item.slug}`}
                                 />)
                         })
                     }

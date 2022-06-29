@@ -9,7 +9,7 @@ import axios from 'axios';
 
 export default function Home({ summary }) {
   return (
-    <div className="static mb-[6em]">
+    <div className="static">
       <SEO title='SIVIO Home' />
       <NavbarContainer />
       <main>
@@ -21,7 +21,6 @@ export default function Home({ summary }) {
          />
         <CountriesContainer />
         <OverallSummaryContainer summary={summary} />
-        <div className="first"/>
       </main>
     </div>
   );
