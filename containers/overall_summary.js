@@ -63,8 +63,7 @@ export function OverallSummaryContainer({ summary }) {
               start: 'bottom bottom',
               pin: true,
               scrub: 1,
-              end: "+=3500",
-              markers: true,
+              end: "+=3500"
             }
         })
     })
