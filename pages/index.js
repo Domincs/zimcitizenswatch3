@@ -12,7 +12,7 @@ export default function Home({ summary }) {
     <div className="static">
       <SEO title='SIVIO Home' />
       <NavbarContainer />
-      <main>
+      <main className="mb-20vh">
         <Background />
         <HeroContainer
             country="African"

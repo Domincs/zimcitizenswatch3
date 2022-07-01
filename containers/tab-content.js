@@ -3,7 +3,7 @@ import { ButtonLink } from "../components/button-link";
 
 export function TabContent({content, link, sector, summary }) {
     const data = [{
-        sector: {sector},
+        sector: sector,
         data: [
           { name: 'Kept', y: summary.kept, color: 'var(--sivio-kept)' },
           { name: 'Not Commenced', y: summary.not_commenced, color: 'var(--sivio-not-commenced)' },

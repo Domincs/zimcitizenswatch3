@@ -17,11 +17,11 @@ export const PromisesAreaContainer = ({ country, economy, governance, corruption
     let socComp = (social_service.implemented/social_service.all*100).toFixed(0)
 
     const [tabsList, updateActiveTab] = useState([
-        {label: "Economy", active: true, content: <TabContent content={`Economy constitutes ${econPer}% of the total promises made. ${econComp}% of these promises have been completed to date.`} link={`${country}/economy`} summary={economy} />},
-        {label: "Governance", active: false, content: <TabContent content={`Governance constitutes ${govPer}% of the total promises made. ${govComp}% of these promises have been completed to date.`} link={`${country}/governance`} summary={governance} />},
-        {label: "Corruption", active: false, content: <TabContent content={`Corruption constitutes ${corrPer}% of the total promises made. ${corrComp}% of these promises have been completed to date.`} link={`${country}/corruption`} summary={corruption} />},
-        {label: "Climate Change", active: false, content: <TabContent content={`Climate Change constitutes ${climPer}% of the total promises made. ${climComp}% of these promises have been completed to date.`} link={`${country}/climate_change`} summary={climate_change} />},
-        {label: "Social Service", active: false, content: <TabContent content={`Social Service constitutes ${socPer}% of the total promises made. ${socComp}% of these promises have been completed to date.`} link={`${country}/social_service`} summary={social_service} />},
+        {label: "Economy", active: true, content: <TabContent content={`Economy constitutes ${econPer}% of the total promises made. ${econComp}% of these promises have been completed to date.`} link={`${country}/economy`} summary={economy} sector="Economy" />},
+        {label: "Governance", active: false, content: <TabContent content={`Governance constitutes ${govPer}% of the total promises made. ${govComp}% of these promises have been completed to date.`} link={`${country}/governance`} summary={governance} sector="Governance" />},
+        {label: "Corruption", active: false, content: <TabContent content={`Corruption constitutes ${corrPer}% of the total promises made. ${corrComp}% of these promises have been completed to date.`} link={`${country}/corruption`} summary={corruption} sector="Corruption" />},
+        {label: "Climate Change", active: false, content: <TabContent content={`Climate Change constitutes ${climPer}% of the total promises made. ${climComp}% of these promises have been completed to date.`} link={`${country}/climate_change`} summary={climate_change} sector="Climate Change" />},
+        {label: "Social Service", active: false, content: <TabContent content={`Social Service constitutes ${socPer}% of the total promises made. ${socComp}% of these promises have been completed to date.`} link={`${country}/social_service`} summary={social_service} sector="Social Service" />},
     ])
 
     const updateTab = (id) => {

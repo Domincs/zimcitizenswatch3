@@ -39,7 +39,7 @@ function classNames(...classes) {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex-shrink-0 flex flex-row gap-2 items-center hidden md:flex">
+                <div className="flex-shrink-0 flex flex-row gap-2 md:gap-6 items-center hidden md:flex">
                     <a target="_blank" href="https://www.sivioinstitute.org">
                       <Image src="/icons/logo.svg" height={42} width={93} />
                     </a>

@@ -47,6 +47,7 @@ export const Bar = ({
       },
     },
     series: data.map((dt) => {
+      console.log(dt.sector)
       return {
         name: dt.sector,
         data: dt.data.map((dt) => dt.y),

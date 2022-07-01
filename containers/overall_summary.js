@@ -12,16 +12,14 @@ export function OverallSummaryContainer({ summary }) {
     const [scrolled, setScrolled] = useState(0)
 
     const items = [
-        { name: "Malawi", active: scrolled < 33.3 , link: '/malawi', target: '_self', map: "/maps/mw.svg" },
-        { name: "Zambia", active: scrolled > 33.3 && scrolled < 66.6, link: '/zambia', target: '_self', map: "/maps/zm.svg" },
-        { name: "Zimbabwe", active: scrolled > 66.6, link: 'https://zimcitizenswatch.org', target: '_blank', map: "/maps/zw.svg" }
+        { name: "Malawi", active: scrolled < 0.333 , link: '/malawi', target: '_self', map: "/maps/mw.svg" },
+        { name: "Zambia", active: scrolled > 0.333 && scrolled < 0.666, link: '/zambia', target: '_self', map: "/maps/zm.svg" },
+        { name: "Zimbabwe", active: scrolled > 0.666, link: 'https://zimcitizenswatch.org', target: '_blank', map: "/maps/zw.svg" }
     ]
 
-    const handleScroll = (e) => {
-        var winScroll = e.target.scrollLeft
-        var height = e.target.scrollWidth - e.target.clientWidth
-        var scrolled = (winScroll / height) * 100
-        setScrolled(scrolled)
+    const handleScroll = (progress) => {
+        console.log(progress)
+        setScrolled(progress)
 
     }
 
@@ -36,37 +34,31 @@ export function OverallSummaryContainer({ summary }) {
         tl.to(sections, {
             xPercent: -100 * (sections.length - 1),
             ease: "none",
-            
-            onStart: (e)=>{
-                console.log("scolling")
-            },
             scrollTrigger: {
               trigger: ".horizontal-scroll",
-              start: 'bottom bottom',
+              start: 'top 25%',
               pin: true,
               scrub: 0.1,
             //   snap: 1 / (sections.length - 1),
               // base vertical scrolling on how wide the container is so it feels more natural.
-              end: "+=3500"
+              end: "+=3500",
+              onUpdate: (self) => {handleScroll(self.progress)}
             }
         })
-        .to('.countries-container', {
-            position: "sticky",
-            zIndex: 1500,
-            ease: "none",
-            top: 0,
-            onStart: ()=>{
-                console.log("Started")
-            },
-            scrollTrigger: {
-              trigger: ".horizontal-scroll",
-              start: 'bottom bottom',
-              pin: true,
-              scrub: 1,
-              end: "+=3500"
-            }
-        })
-    })
+        // .to('.countries-container', {
+        //     position: "static",
+        //     zIndex: 1500,
+        //     ease: "none",
+        //     top: 0,
+        //     scrollTrigger: {
+        //       trigger: ".horizontal-scroll",
+        //       start: 'bottom bottom',
+        //       pin: true,
+        //       scrub: 1,
+        //       end: "+=3500"
+        //     }
+        // })
+    }, [])
 
     return(
         <div className="grid grid-cols-3 container m-auto mt-[8em] horizontal-scroll overflow-hidden">
@@ -84,7 +76,7 @@ export function OverallSummaryContainer({ summary }) {
                 </div>
             </div>
 
-            <div className="col-span-2 flex flex-row flex-nowrap gap-[6em] px-[18em]" onScroll={handleScroll}>
+            <div className="col-span-2 flex flex-row flex-nowrap gap-[6em] px-[18em]">
             
                 {
                     Object.keys(summary).map((item, key) => (

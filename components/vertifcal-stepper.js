@@ -1,10 +1,6 @@
 
 export function VerticalStepper ({items}) {
 
-
-
-
-
     return (
         <div className="wrapper">
         <ol className={`c-stepper`}>

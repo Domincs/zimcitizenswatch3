@@ -1,4 +1,5 @@
 import { Button } from "../components/button"
+import { capitalize } from "../lib/capitalize"
 
 export function CountriesContainer() {
 
@@ -22,7 +23,7 @@ export function CountriesContainer() {
                         </span>
                         <span className="col-span-2">
                             <Button>
-                                <a className="flex flex-row gap-4 text-[10px]" href={item.link} target={item.target} {...(item.target === '_blank' && { rel: "noreferrer" })}>
+                                <a className="flex flex-row gap-4 text-[10px]" href={`#${item.country}`}>
                                 VIEW SUMMARY
                                 </a>
                             </Button>
