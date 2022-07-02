@@ -30,13 +30,11 @@ module.exports = {
         deeper: '#14222D',
         muted: '#908E9B',
       },
-      status: {
-        implemented: '#678C13',
-        kept: '#7FBD42',
-        notcommenced: '#323D43',
-        modified: '#F15C27',
-        broken: '#CC0202'
-      }
+      implemented: '#678C13',
+      kept: '#7FBD42',
+      notcommenced: '#323D43',
+      modified: '#F15C27',
+      broken: '#CC0202'
     },
 
     fontFamily: {

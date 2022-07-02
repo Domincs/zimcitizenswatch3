@@ -39,9 +39,9 @@ export default function Home({sector, summary, promises}) {
     <div className="static mb-[6em] px-4 md:px-0">
       <SEO title='AfricanCitizensWatch' />
       <NavbarContainer />
-      <main className="px-6 md:px-0">
+      <main className="">
         <div className="container m-auto my-12">
-          <h1 className="text-[106px] leading-none">{capitalize(sector)}</h1>
+          <h1 className="text-[56px] md:text-[106px] leading-none">{capitalize(sector)}</h1>
         </div>
         <SummaryOfPerformanceContainer date={moment().format("LL")} statuses={statuses} />
         <SectorPromisesContainer keyNodes={keyNodes} promises={promises} path={asPath} />
@@ -63,8 +63,6 @@ Home.getInitialProps = async ({query}) => {
     apiUrl = process.env.ZM_URL
     countFrom = process.env.ZM_INAUGURATION
   }
-
-  console.log("hello: ", `${apiUrl}/${sector}/summary`)
 
   const summary = (await axios.get(`${apiUrl}/${sector}/summary`)).data
 

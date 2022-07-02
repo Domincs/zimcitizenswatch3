@@ -59,8 +59,9 @@ function classNames(...classes) {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-4">
                 {
                   asPath !== "/" && 
-                  <a className='flex flex-col' key="home" href="/" >
+                  <a className='flex flex-col group' key="home" href="/" >
                     <span className="px-2">CitizensWatch Home</span>
+                    <span className="h-[6px] w-full transition ease-in-out duration-300 delay-150 border-radius group-hover:bg-orange"/>
                   </a>
                 }
                 
@@ -68,9 +69,9 @@ function classNames(...classes) {
                   navigation.map((item, idx) => {
                     if(item.type === 'link') {
                       return (
-                        <a className='flex flex-col' key={idx} href={item.href} >
+                        <a className='flex flex-col group' key={idx} href={item.href} >
                           <span className="px-2">{item.name}</span>
-                          <span className="h-[6px] w-full border-radius bg-orange hidden"/>
+                          <span className="h-[6px] w-full transition ease-in-out duration-300 delay-150 border-radius group-hover:bg-orange"/>
                           
                         </a>
                       

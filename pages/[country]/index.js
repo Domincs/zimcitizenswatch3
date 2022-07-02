@@ -46,7 +46,6 @@ Home.getInitialProps = async ({query}) => {
     countFrom = process.env.ZM_INAUGURATION
   }
 
-  console.log(apiUrl)
 
   const summary = (await axios.get(`${apiUrl}/summary`)).data
 

@@ -16,7 +16,10 @@ export function PromiseItemContainer({status, promise, date, color, link, icon})
                 <span>{promise}</span>
                 <span className="w-fit border-b leading-loose">
                     <ButtonLink link={link}>
-                        Read More <img src="/icons/right-arrow-black.svg" />
+                        <span className="flex flex-row items-between px-2 gap-4">
+                            <span>Read More</span> 
+                            <img src="/icons/right-arrow-black.svg" />
+                        </span>
                     </ButtonLink>
                 </span>
             </div>

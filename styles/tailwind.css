@@ -214,6 +214,10 @@ p, a, .base-font {
   @apply text-[16px];
 }
 
+h1 {
+  @apply text-[106px];
+}
+
 h4 {
   @apply text-[32px];
 }

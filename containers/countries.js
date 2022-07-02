@@ -14,16 +14,16 @@ export function CountriesContainer() {
             {
                 countries.map((item, idx) => (
                     <span className={`grid grid-cols-2 place-content-center justify-items-center gap-4 py-6`} key={idx}>
-                        <span>{item.country}</span>
+                        <span className="text-[10px] md:text-[20px]">{item.country}</span>
                         <span>
-                        <img src={item.flag} alt="flag" className="h-6 drop-shadow-2xl"/>
+                        <img src={item.flag} alt="flag" className="h-4 md:h-6 drop-shadow-2xl"/>
                         </span>
                         <span className="col-span-2 mt-0 md:mt-[5em]">
-                            <img src={item.map} alt="map" className="h-[6em]"/>
+                            <img src={item.map} alt="map" className="h-[3em] md:h-[6em]"/>
                         </span>
                         <span className="col-span-2">
                             <Button>
-                                <a className="flex flex-row gap-4 text-[10px]" href={`#${item.country}`}>
+                                <a className="flex flex-row gap-4 text-[10px] mx-2 md:px-8 py-1 md:py-2" href={`#${item.country}`}>
                                 VIEW SUMMARY
                                 </a>
                             </Button>

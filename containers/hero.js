@@ -14,7 +14,10 @@ export function HeroContainer({country, description, link, ...rest}) {
                     {
                         link !== undefined ?
                         <Button>
-                            <span className="flex flex-row gap-4 items-end"><span>READ MORE</span><img src="/icons/down-arrow.svg" /></span>
+                            <span className="flex flex-row gap-4 items-end items-between px-3 py-2">
+                                <span>READ MORE</span>
+                                <img src="/icons/down-arrow.svg" />
+                            </span>
                         </Button> 
                         :
                         <span />

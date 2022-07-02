@@ -18,7 +18,6 @@ export function OverallSummaryContainer({ summary }) {
     ]
 
     const handleScroll = (progress) => {
-        console.log(progress)
         setScrolled(progress)
 
     }
@@ -69,7 +68,7 @@ export function OverallSummaryContainer({ summary }) {
                 <div className="basis-2/3">
                     <img src={items.find((obj) => obj.active === true).map} className="h-[16em] mb-8 pr-4" />
                     <Button color="orange">
-                        <a className="flex flex-row gap-4 text-[10px]" href={items.find((obj) => obj.active === true).link} target={items.find((obj) => obj.active === true).target} {...(items.find((obj) => obj.active === true).target === '_blank' && { rel: "noreferrer" })}>
+                        <a className="flex flex-row gap-4 text-[10px] items-between px-2 py-2 " href={items.find((obj) => obj.active === true).link} target={items.find((obj) => obj.active === true).target} {...(items.find((obj) => obj.active === true).target === '_blank' && { rel: "noreferrer" })}>
                         <span>Visit {items.find((obj) => obj.active === true).name} Tracker</span><img src="/icons/right-arrow-white.svg" className="h-[0.7em]" />
                         </a>
                     </Button>

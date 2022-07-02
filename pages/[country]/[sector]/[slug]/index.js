@@ -12,11 +12,10 @@ export default function Home({ promise, sector }) {
       <SEO title='AfricanCitizensWatch' />
       <NavbarContainer />
       <main>
-        <div className="container m-auto my-12">
+        <div className="container m-auto my-12 px-6">
           <Breadcrumb />
         </div>
-        <PromiseTracker 
-          icon={`/icons/${promise[0].status}.svg`} 
+        <PromiseTracker
           sector={capitalize(sector)}
           promise={promise}
         />
