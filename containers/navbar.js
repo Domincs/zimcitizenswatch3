@@ -31,7 +31,7 @@ function classNames(...classes) {
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   {open ? (
                     <span>
-                      <Image src="/icons/menu.svg" height={26} width={21} />
+                      <Image src="/icons/close.svg" height={26} width={21} />
                     </span>
                   ) : (
                     <span><Image src="/icons/menu.svg" height={26} width={21} /></span>
@@ -59,21 +59,25 @@ function classNames(...classes) {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-4">
                 {
                   asPath !== "/" && 
-                  <a className='flex flex-col group' key="home" href="/" >
-                    <span className="px-2">CitizensWatch Home</span>
-                    <span className="h-[6px] w-full transition ease-in-out duration-300 delay-150 border-radius group-hover:bg-orange"/>
-                  </a>
+                  <Link href='/'>
+                    <a className='flex flex-col group' key="home001">
+                      <span className="px-2">CitizensWatch Home</span>
+                      <span className="h-[6px] w-full transition ease-in-out duration-300 delay-150 border-radius group-hover:bg-orange"/>
+                    </a>
+                  </Link>
                 }
                 
                 {
                   navigation.map((item, idx) => {
                     if(item.type === 'link') {
                       return (
-                        <a className='flex flex-col group' key={idx} href={item.href} >
-                          <span className="px-2">{item.name}</span>
-                          <span className="h-[6px] w-full transition ease-in-out duration-300 delay-150 border-radius group-hover:bg-orange"/>
-                          
-                        </a>
+                        <Link key={idx} href={item.href}>
+                          <a className='group hidden md:flex md:flex-col' >
+                            <span className="px-2">{item.name}</span>
+                            <span className="h-[6px] w-full transition ease-in-out duration-300 delay-150 border-radius group-hover:bg-orange"/>
+                          </a>
+                        </Link>
+                        
                       
                       )
                     }
@@ -142,9 +146,10 @@ function classNames(...classes) {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="sm:hidden transition ease-in-out duration-300 delay-300 absolute box-shadow origin-top-left left-0 w-full rounded shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
+                item.type === 'link' &&
                 <Disclosure.Button
                   key={item.name}
                   as="a"

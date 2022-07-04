@@ -6,6 +6,7 @@ import { capitalize } from '../../lib/capitalize'
 import { CountrySummaryContainer } from '../../containers/country-summary'
 import { PromiseSummaryContainer } from '../../containers/promise-summary'
 import { PromisesAreaContainer } from '../../components/promises-area'
+import { getSummaryPerCountry, getSummaryPerSector } from '../../apis/apis'
 
 export default function Home({country, summary, countFrom, economy, governance, corruption, climate_change, social_service}) {
   const statuses = [
@@ -18,7 +19,7 @@ export default function Home({country, summary, countFrom, economy, governance, 
   ]
   return (
     <div className="static mb-[6em] my-4">
-      <SEO title='AfricanCitizensWatch' />
+      <SEO title='Country' />
       <NavbarContainer />
       <main>
         <HeroContainer
@@ -45,6 +46,14 @@ Home.getInitialProps = async ({query}) => {
     apiUrl = process.env.ZM_URL
     countFrom = process.env.ZM_INAUGURATION
   }
+  console.log(apiUrl)
+
+  // const summary = getSummaryPerCountry(apiUrl)
+  // const economy = getSummaryPerSector(apiUrl, 'economy')
+  // const governance = getSummaryPerSector(apiUrl, 'governance')
+  // const corruption = getSummaryPerSector(apiUrl, 'corruption')
+  // const climate_change = getSummaryPerSector(apiUrl, 'climate_change')
+  // const social_service = getSummaryPerSector(apiUrl, 'social_service')
 
 
   const summary = (await axios.get(`${apiUrl}/summary`)).data

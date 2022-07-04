@@ -9,7 +9,7 @@ export default function Home({ promise, sector }) {
 
   return (
     <div className="static mb-[6em]">
-      <SEO title='AfricanCitizensWatch' />
+      <SEO title='Sector' />
       <NavbarContainer />
       <main>
         <div className="container m-auto my-12 px-6">

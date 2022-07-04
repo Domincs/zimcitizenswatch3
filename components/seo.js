@@ -14,18 +14,19 @@ export const SEO = ({
     />
     <meta name='author' content='Dominic Chingoma' />
     <meta name='image' content={image} />
-    <meta name='og:title' content={`AfricanCitizensWatch: ${title}`} />
+    <meta name='og:title' content={`AfricanCitizensWatch | ${title}`} />
     <meta name='og:description' content={description} />
     <meta name='og:image' content={image} />
     <meta name='og:url' content='https://africancitizenswatch.org' />
-    <meta name='og:site_name' content={`AfricanCitizensWatch: ${title}`} />
+    <meta name='og:site_name' content={`AfricanCitizensWatch | ${title}`} />
     <meta name='og:type' content='website' />
     <meta name='twitter:card' content='summary' />
-    <meta name='twitter:title' content={`AfricanCitizensWatch: ${title}`} />
+    <meta name='twitter:title' content={`AfricanCitizensWatch | ${title}`} />
     <meta name='twitter:description' content={description} />
     <meta name='twitter:image' content={image} />
     <meta name='twitter:site' content='@sivioinstitute' />
     <meta name='twitter:creator' content='@sivioinstitute' />
     <title>AfricanCitizensWatch | {title}</title>
+    {console.log(title)}
   </Head>
 );

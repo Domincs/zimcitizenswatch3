@@ -11,13 +11,19 @@ export function OverallSummaryContainer({ summary }) {
     const ref = useRef(null);
     const [scrolled, setScrolled] = useState(0)
 
+    // const items = [
+    //     { name: "Malawi", active: scrolled > 0, link: '/malawi', target: '_self', map: "/maps/mw.svg" },
+    //     { name: "Zambia", active: scrolled > 0.333, link: '/zambia', target: '_self', map: "/maps/zm.svg" },
+    //     { name: "Zimbabwe", active: scrolled > 0.666, link: 'https://zimcitizenswatch.org', target: '_blank', map: "/maps/zw.svg" }
+    // ]
     const items = [
-        { name: "Malawi", active: scrolled < 0.333 , link: '/malawi', target: '_self', map: "/maps/mw.svg" },
-        { name: "Zambia", active: scrolled > 0.333 && scrolled < 0.666, link: '/zambia', target: '_self', map: "/maps/zm.svg" },
-        { name: "Zimbabwe", active: scrolled > 0.666, link: 'https://zimcitizenswatch.org', target: '_blank', map: "/maps/zw.svg" }
+        { name: "Malawi", active: true, link: '/malawi', target: '_self', map: "/maps/mw.svg" },
+        { name: "Zambia", active: scrolled > 0.5, link: '/zambia', target: '_self', map: "/maps/zm.svg" },
+        { name: "Zimbabwe", active: scrolled === 1, link: 'https://zimcitizenswatch.org', target: '_blank', map: "/maps/zw.svg" }
     ]
 
     const handleScroll = (progress) => {
+        console.log(100-progress*100)
         setScrolled(progress)
 
     }
@@ -63,7 +69,7 @@ export function OverallSummaryContainer({ summary }) {
         <div className="grid grid-cols-3 container m-auto mt-[8em] horizontal-scroll overflow-hidden">
             <div className="flex flex-row bg-white z-[1000]">
                 <div className="basis-1/3">
-                    <VerticalStepper items={items} />
+                    <VerticalStepper items={items} progress={scrolled} />
                 </div>
                 <div className="basis-2/3">
                     <img src={items.find((obj) => obj.active === true).map} className="h-[16em] mb-8 pr-4" />

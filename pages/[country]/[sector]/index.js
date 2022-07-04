@@ -37,7 +37,7 @@ export default function Home({sector, summary, promises}) {
 
   return (
     <div className="static mb-[6em] px-4 md:px-0">
-      <SEO title='AfricanCitizensWatch' />
+      <SEO title='Sector' />
       <NavbarContainer />
       <main className="">
         <div className="container m-auto my-12">

@@ -10,7 +10,7 @@ import axios from 'axios';
 export default function Home({ summary }) {
   return (
     <div className="static">
-      <SEO title='SIVIO Home' />
+      <SEO title='Home' />
       <NavbarContainer />
       <main className="mb-20vh">
         <Background />
