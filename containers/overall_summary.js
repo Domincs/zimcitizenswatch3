@@ -50,19 +50,6 @@ export function OverallSummaryContainer({ summary }) {
               onUpdate: (self) => {handleScroll(self.progress)}
             }
         })
-        // .to('.countries-container', {
-        //     position: "static",
-        //     zIndex: 1500,
-        //     ease: "none",
-        //     top: 0,
-        //     scrollTrigger: {
-        //       trigger: ".horizontal-scroll",
-        //       start: 'bottom bottom',
-        //       pin: true,
-        //       scrub: 1,
-        //       end: "+=3500"
-        //     }
-        // })
     }, [])
 
     return(

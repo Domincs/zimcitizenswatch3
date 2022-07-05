@@ -7,10 +7,22 @@ import moment from 'moment'
 import { SectorPromisesContainer } from '../../../containers/sector-promises';
 import { useRouter } from "next/router";
 import axios from 'axios'
+import { normalize } from '../../../lib/normalize';
 
 export default function Home({sector, summary, promises}) {
+
   const { asPath } = useRouter();
   const [keyNodes, setKeyNodes] = useState([{ active: true, text: "All categories" }])
+  const [statuses, updateStatus] = useState([
+    {label: "Total Promises", value: summary.all, active: true},
+    {label: "Kept", value: summary.kept, active: false},
+    {label: "Not Commenced", value: summary.not_commenced, active: false},
+    {label: "Modified", value: summary.modified, active: false},
+    {label: "Broken", value: summary.broken, active: false},
+    {label: "Implemented", value: summary.implemented, active: false}
+  ])
+
+  const [currentPromises, setPromises] = useState(promises)
 
   useEffect(() => {
     const nodes = promises.map(obj => {
@@ -24,16 +36,26 @@ export default function Home({sector, summary, promises}) {
     })
 
     setKeyNodes([...keyNodes, ...listItems])
-  }, [])
+  },[promises])
 
-  const statuses = [
-    {label: "Total Promises", value: summary.all},
-    {label: "Kept", value: summary.kept},
-    {label: "Not Commenced", value: summary.not_commenced},
-    {label: "Modified", value: summary.modified},
-    {label: "Broken", value: summary.broken},
-    {label: "Implemented", value: summary.implemented}
-  ]
+
+  const clickFilter = (id) => {
+    const newStatus = statuses.map(obj => {
+      if(obj.label === id) {
+        return {...obj, active: true}
+      }
+      return {...obj, active: false}
+    })
+    updateStatus(newStatus)
+    if(id === "Total Promises") {
+      setPromises(promises)
+    }
+    else {
+      const filtered = promises.filter(obj => normalize(obj.promise_state).toUpperCase() === id.toUpperCase())
+      setPromises(filtered)
+    }
+
+  }
 
   return (
     <div className="static mb-[6em] px-4 md:px-0">
@@ -43,8 +65,8 @@ export default function Home({sector, summary, promises}) {
         <div className="container m-auto my-12">
           <h1 className="text-[56px] md:text-[106px] leading-none">{capitalize(sector)}</h1>
         </div>
-        <SummaryOfPerformanceContainer date={moment().format("LL")} statuses={statuses} />
-        <SectorPromisesContainer keyNodes={keyNodes} promises={promises} path={asPath} />
+        <SummaryOfPerformanceContainer date={moment().format("LL")} statuses={statuses} onClick={clickFilter}/>
+        <SectorPromisesContainer keyNodes={keyNodes} promises={currentPromises} path={asPath} />
         
       </main>
     </div>
