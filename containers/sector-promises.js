@@ -6,9 +6,12 @@ export function SectorPromisesContainer ({ keyNodes, promises, path }) {
 
     return (
         <div className="md:grid flex flex-col-reverse md:grid-cols-3">
-            <div className="col-span-1 md:col-span-2 bg-gray-light py-6 rounded-0 md:rounded-r-[40px] ">
-                <div className="pl-1 sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem] pr-6 flex flex-col gap-6">
-                     <h2 className="text-[20px] md:text-[32px] my-8">Arranged in order of latest update</h2>
+            <div className="col-span-1 flex md:col-span-2 bg-gray-light py-6 rounded-0 md:rounded-r-[40px] justify-end">
+                <div className="pl-1 sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem] pr-6 flex flex-col gap-6 w-full max-w-5xl">
+                    <span className="w-max">
+                        <h2 className="text-[20px] md:text-[32px] my-8">Arranged in order of latest update</h2>
+                    </span>
+                     
                     {
                         promises.map((item, idx) => {
                             let color
@@ -43,7 +46,7 @@ export function SectorPromisesContainer ({ keyNodes, promises, path }) {
                     
                 </div>
             </div>
-            <div className="flex flex-wrap h-fit gap-2 pl-0 md:pl-6 pd-6">
+            <div className="flex flex-wrap h-fit gap-2 pl-0 md:pl-6 pd-6 max-w-sm">
                 {
                     keyNodes.map((item, idx) => (
                         <FilterBadge key={idx} active={item.active} text={item.text} /> 

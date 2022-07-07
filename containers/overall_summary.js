@@ -23,13 +23,11 @@ export function OverallSummaryContainer({ summary }) {
     ]
 
     const handleScroll = (progress) => {
-        console.log(100-progress*100)
         setScrolled(progress)
 
     }
 
     useEffect(() => {
-        const element = ref.current
         gsap.registerPlugin(ScrollTrigger)
         let tl = gsap.timeline({});
         
@@ -42,6 +40,7 @@ export function OverallSummaryContainer({ summary }) {
             scrollTrigger: {
               trigger: ".horizontal-scroll",
               start: 'top 25%',
+              end: () => innerWidth * sections.length,
               pin: true,
               scrub: 0.1,
             //   snap: 1 / (sections.length - 1),

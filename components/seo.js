@@ -8,25 +8,28 @@ export const SEO = ({
   <Head>
     <link rel='icon' href='/favicon.ico' />
     <meta name='description' content={description} />
+   
     <meta
       name='keywords'
       content='african citizens watch, policy tracker, zambia policy tracker, malawi policy tracker, zimbabwe policy tracker'
-    />
+    />  
     <meta name='author' content='Dominic Chingoma' />
     <meta name='image' content={image} />
     <meta name='og:title' content={`AfricanCitizensWatch | ${title}`} />
     <meta name='og:description' content={description} />
     <meta name='og:image' content={image} />
     <meta name='og:url' content='https://africancitizenswatch.org' />
-    <meta name='og:site_name' content={`AfricanCitizensWatch | ${title}`} />
+    
+    <meta name='og:site_name' content={`AfricanCitizensWatch`} />
     <meta name='og:type' content='website' />
     <meta name='twitter:card' content='summary' />
-    <meta name='twitter:title' content={`AfricanCitizensWatch | ${title}`} />
+    
+    <meta name='twitter:title' content={`AfricanCitizensWatch`} />
     <meta name='twitter:description' content={description} />
     <meta name='twitter:image' content={image} />
+    
     <meta name='twitter:site' content='@sivioinstitute' />
     <meta name='twitter:creator' content='@sivioinstitute' />
-    <title>AfricanCitizensWatch | {title}</title>
-    {console.log(title)}
+    <title>{`AfricanCitizensWatch | ${title}`}</title>
   </Head>
 );
