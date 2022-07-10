@@ -5,6 +5,7 @@ import { OverallSummaryContainer } from '../containers/overall_summary';
 import { NavbarContainer } from '../containers/navbar';
 import { Background } from '../containers/background';
 import axios from 'axios';
+import { AboutContainer } from '../containers/about';
 
 
 export default function Home({ summary }) {
@@ -17,10 +18,11 @@ export default function Home({ summary }) {
         <HeroContainer
             country="African"
             description="an independent platform that tracks the performance and effectiveness of of African governments based on the pledges made in the manifesto and other important policy pronouncements."
-            link="/#"
+            link="#about-section"
          />
         <CountriesContainer />
         <OverallSummaryContainer summary={summary} />
+        <AboutContainer />
       </main>
     </div>
   );

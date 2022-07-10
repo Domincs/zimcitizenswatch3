@@ -48,8 +48,8 @@ export function ScrollSection({country, summary, additional_classes, link, targe
     ]
 
     return(
-        <div>
-            <div className={`flex flex-row overflow-x-scroll flex-nowrap pb-[4em] ${additional_classes} ml-[-18em]`} id={country}>
+        <div className={`${additional_classes} ml-[-18em]`}>
+            <div className={`flex flex-row overflow-x-scroll flex-nowrap pb-[4em]`} id={country}>
                 <span className="flex flex-col w-fit mr-[4em]">
                     <h2 className="text-4xl uppercase w-max mb-6">Time Since Inauguration</h2>
                     <span className="flex justify-between w-full">

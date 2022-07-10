@@ -46,15 +46,6 @@ Home.getInitialProps = async ({query}) => {
     apiUrl = process.env.ZM_URL
     countFrom = process.env.ZM_INAUGURATION
   }
-  console.log(apiUrl)
-
-  // const summary = getSummaryPerCountry(apiUrl)
-  // const economy = getSummaryPerSector(apiUrl, 'economy')
-  // const governance = getSummaryPerSector(apiUrl, 'governance')
-  // const corruption = getSummaryPerSector(apiUrl, 'corruption')
-  // const climate_change = getSummaryPerSector(apiUrl, 'climate_change')
-  // const social_service = getSummaryPerSector(apiUrl, 'social_service')
-
 
   const summary = (await axios.get(`${apiUrl}/summary`)).data
 
@@ -66,26 +57,3 @@ Home.getInitialProps = async ({query}) => {
 
   return { country, summary, countFrom, economy, governance, corruption, climate_change, social_service }
 }
-
-
-
-// export async function getStaticPaths() {
-
-//   const paths  = [
-//     { params: { hj: 'malawi' }},
-//     { params: { hj: 'zambia' }},
-//   ]
-
-//   return { paths, fallback: false }
-// }
-
-// export async function getStaticProps({ params }) {
-//     const { hj } = params;
-
-//   return {
-//     props: {
-//       hj
-//     },
-//     revalidate: 60,
-//   };
-// }

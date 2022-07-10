@@ -153,60 +153,6 @@ img[width] {
   }
 }
 
-:root {
-  --circle-size: clamp(0.469em, 0.469em, 0.469em);
-  --spacing: clamp(1em, 1em, 0.5em);
-}
-
-.c-stepper__item, .c-stepper__item_completed {
-  position: relative;
-  display: flex;
-  gap: 1rem;
-  padding-bottom: 3rem;
-}
-.c-stepper__item:before {
-  content: "";
-  flex: 0 0 var(--circle-size);
-  height: var(--circle-size);
-  border-radius: 50%;
-  background-color: var(--white);
-  border: 1px solid #BEBEBE;
-  margin-top: 0.5em;
-}
-
-.c-stepper__item_completed:before {
-  content: "";
-  flex: 0 0 var(--circle-size);
-  height: var(--circle-size);
-  border-radius: 50%;
-  background-color: #000000;
-  margin-top: 0.1em;
-  
-}
-
-
-.c-stepper__item:not(:last-child):after, .c-stepper__item_completed:not(:last-child):after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: calc(var(--circle-size) * 2);
-  bottom: 0;
-  transform: translateX(calc(var(--circle-size) / 4));
-  width: 5px;
-  margin-top: 0.1em;
-  background-color: #BEBEBE;
-}
-
-
-.c-stepper__desc {
-  color: grey;
-  font-size: clamp(0.85rem, 2vmax, 1rem);
-}
-
-.c-stepper__content {
-  max-width: 700px;
-}
-
 /*vertical stepper */
 :root {
   --black-color: #000000;
@@ -438,8 +384,18 @@ h1 {
   @apply text-[106px];
 }
 
+h2 {
+  @apply text-[56px];
+  font-weight: 500;
+  line-height: 100%;
+}
+
 h4 {
   @apply text-[32px];
+}
+
+h5 {
+  @apply text-[24px];
 }
 
 body {

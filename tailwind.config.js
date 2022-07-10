@@ -1,4 +1,4 @@
- 
+
 module.exports = {
   content: [
     "./src/**/*.{html,js}",
@@ -94,8 +94,10 @@ module.exports = {
       grayscale: ['group-hover'],
       brightness: ['group-hover'],
       opacity: ['disabled'],
-      cursor: ['disabled'],
-    },
-  },
-  plugins: [require('@tailwindcss/typography')],
+      cursor: ['disabled']
+    }
+},
+plugins: [
+  require('@tailwindcss/typography'),
+  ]
 };
