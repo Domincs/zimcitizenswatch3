@@ -6,7 +6,6 @@ import { capitalize } from '../../lib/capitalize'
 import { CountrySummaryContainer } from '../../containers/country-summary'
 import { PromiseSummaryContainer } from '../../containers/promise-summary'
 import { PromisesAreaContainer } from '../../components/promises-area'
-import { getSummaryPerCountry, getSummaryPerSector } from '../../apis/apis'
 
 export default function Home({country, summary, countFrom, economy, governance, corruption, climate_change, social_service}) {
   const statuses = [

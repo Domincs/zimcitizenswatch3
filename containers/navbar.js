@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { useRouter } from "next/router";
 import Link from 'next/link';
@@ -8,14 +8,47 @@ export function NavbarContainer() {
   const { asPath } = useRouter();
 
 
-const navigation = [
-  { name: 'Reports', href: '#', type: 'link', active: true },
-  { name: 'Select Country', href: '#', type: 'dropdown', option: [
-    {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
-    {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'},
-    {country: "Zimbabwe", link: "https://zimcitizenswatch.org", active: false, flag: '/flags/zw.svg'}
-  ] }
-]
+let navigation
+
+if(asPath.includes('/zambia')) {
+  navigation = [
+    { name: 'Reports', href: '#', type: 'link', active: true },
+    { name: 'Key Documents', href: '#', type: 'select', option: [
+      {label: 'Manifesto', link: '#'}
+    ]},
+    { name: 'Select Country', href: '#', type: 'dropdown', option: [
+      {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
+      {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'},
+      {country: "Zimbabwe", link: "https://zimcitizenswatch.org", active: false, flag: '/flags/zw.svg'}
+      ]
+    }
+  ]
+}
+else if(asPath.includes('/malawi')) {
+  navigation = [
+    { name: 'Reports', href: '#', type: 'link', active: true },
+    { name: 'Key Documents', href: '#', type: 'select', option: [
+      {label: 'Manifesto', link: '#'}
+    ]},
+    { name: 'Select Country', href: '#', type: 'dropdown', option: [
+      {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
+      {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'},
+      {country: "Zimbabwe", link: "https://zimcitizenswatch.org", active: false, flag: '/flags/zw.svg'}
+      ]
+    }
+  ]
+}
+else {
+  navigation = [
+    { name: 'Reports', href: '#', type: 'link', active: true },
+    { name: 'Select Country', href: '#', type: 'dropdown', option: [
+      {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
+      {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'},
+      {country: "Zimbabwe", link: "https://zimcitizenswatch.org", active: false, flag: '/flags/zw.svg'}
+      ]
+    }
+  ]
+}
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -83,7 +116,7 @@ function classNames(...classes) {
                     }
                     else if(item.type === 'dropdown') {
                       return (
-                        <Menu as="div" className="ml-3 relative">
+                        <Menu as="div" className="ml-3 relative mt-[-0.45em]">
                           <Menu.Button className="flex rounded-full border focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white border-[#000000] px-[0.5em] py-0">
                             <span className="flex flex-row items-center justify-between gap-10">
                               <span>
@@ -136,6 +169,50 @@ function classNames(...classes) {
                       
                       )
                     }
+
+                    else if(item.type === 'select') {
+                      return (
+                        <Menu as="div" className="ml-3 relative hidden sm:block mt-[-0.45em]">
+                          <Menu.Button className="flex focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white border-[#000000] px-[0.5em] py-0">
+                            <span className="flex flex-row items-center justify-between gap-2">
+                              {item.name}
+                              <Image src="/icons/select-down-arrow.svg" height={12} width={15} />
+                            </span>
+                            
+                          </Menu.Button>
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              {
+                                item.option.map((menuItem, itemId) => (
+                                  <Menu.Item key={itemId}>
+                                    {({ active }) => (
+                                      <a
+                                        href={menuItem.link}
+                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                        target="_blank" rel="noreferrer"
+                                      >
+                                        {menuItem.label}
+                                      </a>
+                                    )}
+                                  </Menu.Item>
+                                ))
+                              }
+                            </Menu.Items>
+                          </Transition>
+                        
+                        </Menu>
+                      
+                      )
+                    }
+
                     return (<></>)
                   })
                 }
@@ -146,23 +223,66 @@ function classNames(...classes) {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden transition ease-in-out duration-300 delay-300 absolute box-shadow origin-top-left left-0 w-full rounded shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Disclosure.Panel className="sm:hidden transition ease-in-out duration-300 delay-300 absolute box-shadow origin-top-left left-0 w-full shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
-                item.type === 'link' &&
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
+              {navigation.map((item) => {
+                if(item.type === 'link'){
+                  return (
+                  <Disclosure.Button
+                    key={item.name}
+                    as="a"
+                    href={item.href}
+                    className={classNames(
+                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'block px-3 py-2 rounded-md text-base font-medium'
+                    )}
+                    aria-current={item.current ? 'page' : undefined}
+                  >
+                    {item.name}
+                  </Disclosure.Button>)
+                }
+                else if(item.type === 'select') {
+                  return (
+                    <Menu as="div" className="ml-3 relative">
+                      <Menu.Button className="flex rounded-full border focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white border-[#000000] px-[0.5em] py-0">
+                        <span className="flex flex-row items-center justify-between gap-10">
+                          {item.name}
+                        </span>
+                        
+                      </Menu.Button>
+                      <Transition
+                        as={Fragment}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95"
+                      >
+                        <Menu.Items className="origin-top-left absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                          {
+                            item.option.map((menuItem, itemId) => (
+                              <Menu.Item key={itemId}>
+                                {({ active }) => (
+                                  <a
+                                    href={menuItem.link}
+                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                    target="_blank" rel="noreferrer"
+                                  >
+                                    {menuItem.label}
+                                  </a>
+                                )}
+                              </Menu.Item>
+                            ))
+                          }
+                        </Menu.Items>
+                      </Transition>
+                    
+                    </Menu>
+                  
+                  )
+                }
+              })}
             </div>
           </Disclosure.Panel>
         </>

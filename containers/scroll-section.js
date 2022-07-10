@@ -51,7 +51,7 @@ export function ScrollSection({country, summary, additional_classes, link, targe
         <div className={`${additional_classes} ml-[-18em]`}>
             <div className={`flex flex-row overflow-x-scroll flex-nowrap pb-[4em]`} id={country}>
                 <span className="flex flex-col w-fit mr-[4em]">
-                    <h2 className="text-4xl uppercase w-max mb-6">Time Since Inauguration</h2>
+                    <h2 className="text-2xl md:text-4xl uppercase w-max mb-6">Time Since Inauguration</h2>
                     <span className="flex justify-between w-full">
                         <CountdownItem value={days} label="days" />
                         <CountdownItem value={hours} label="hours" />
@@ -61,12 +61,12 @@ export function ScrollSection({country, summary, additional_classes, link, targe
                 </span>
 
                 <div className="flex flex-col min-w-[40em]">
-                    <h2 className="text-4xl uppercase mb-6">Summary of Promises</h2>
+                    <h2 className="text-2xl md:text-4xl uppercase mb-6">Summary of Promises</h2>
                     <SummaryGrid sectors={sectors} />
                 </div>
                 <div className="flex w-fit">
                     <a href={link} target={target} className="flex items-center h-fit w-fit px-[3.6em] my-0 mx-[10em] w-max origin-top-left rotate-90 translate-y-[4em] flex-row bg-orange py-6 gap-6">
-                        <span className="text-[18px] sans-serif uppercase leading-none tracking-[0.16em]">Visit {country} tracker</span>
+                        <span className="text-[10px] md:text-[18px] sans-serif uppercase leading-none tracking-[0.16em]">Visit {country} tracker</span>
                         <img src="/icons/link-arrow.svg" alt="link" />
                     </a>
 
