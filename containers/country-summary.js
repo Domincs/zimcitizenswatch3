@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import { CountryCountDown } from "../components/country-countdown";
 import { Newsletter } from "./newsletter";
 
-export function CountrySummaryContainer({countFromDate}) {
+export function CountrySummaryContainer({countFromDate, country}) {
+    let rulingParty = ""
+    if(country.toUpperCase() === 'ZAMBIA') {
+        rulingParty = "Patriotic Front (PF)"
+    }
+    else if(country.toUpperCase() === 'MALAWI') {
+        rulingParty = "Democratic Progressive Party (DPP)"
+    }
 
     const [days, setDays] = useState(0)
     const [hours, setHours] = useState(0)
@@ -55,7 +62,7 @@ export function CountrySummaryContainer({countFromDate}) {
                 <div className="max-w-2xl py-4">
                     <h2 className="text-[56px] py-8">Promises</h2>
                     <p className="pr-0 md:pr-[6em] text-[20px] leading-[26px]">
-                    The promises that we are tracking are derived from the commitments that ZANU PF made in their manifesto as well as other key policy pronouncements. We evaluate each promise using the scale ranging from not commenced to implemented. Get informed on what was promised and how government is faring in meeting their promises.
+                    The promises that we are tracking are derived from the commitments that {rulingParty} made in their manifesto as well as other key policy pronouncements. We evaluate each promise using the scale ranging from not commenced to implemented. Get informed on what was promised and how government is faring in meeting their promises.
                     </p>
                 </div>
             </div>

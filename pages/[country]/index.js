@@ -25,7 +25,7 @@ export default function Home({country, summary, countFrom, economy, governance, 
             country={capitalize(country)}
             description="Tracking the performance and effectiveness of the government of Malawi based on the pledges made in the manifesto and other important policy pronouncements."
          />
-        <CountrySummaryContainer countFromDate={countFrom} />
+        <CountrySummaryContainer countFromDate={countFrom} country={country} />
         <PromiseSummaryContainer statuses={statuses} />
         <PromisesAreaContainer country={country} economy={economy} governance={governance} corruption={corruption} climate_change={climate_change} social_service={social_service} />
       </main>
