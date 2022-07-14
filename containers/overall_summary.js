@@ -1,7 +1,7 @@
 
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import gsap from "gsap";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../components/button";
 import { VerticalStepper } from "../components/vertifcal-stepper";
 import { capitalize } from "../lib/capitalize";

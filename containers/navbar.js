@@ -14,7 +14,7 @@ if(asPath.includes('/zambia')) {
   navigation = [
     { name: 'Reports', href: '#', type: 'link', active: true },
     { name: 'Key Documents', href: '#', type: 'select', option: [
-      {label: 'Manifesto', link: '#'}
+      {label: 'Manifesto', link: '/documents/zambia/UPND_Party Manifesto_2021-2026_Zambia.pdf'}
     ]},
     { name: 'Select Country', href: '#', type: 'dropdown', option: [
       {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
@@ -28,7 +28,7 @@ else if(asPath.includes('/malawi')) {
   navigation = [
     { name: 'Reports', href: '#', type: 'link', active: true },
     { name: 'Key Documents', href: '#', type: 'select', option: [
-      {label: 'Manifesto', link: '#'}
+      {label: 'Manifesto', link: '/documents/malawi/MCP Manifesto_Abridged Version_2019-2024.pdf'}
     ]},
     { name: 'Select Country', href: '#', type: 'dropdown', option: [
       {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
