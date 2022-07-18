@@ -1,7 +1,6 @@
 import { Button } from "../components/button"
-import { capitalize } from "../lib/capitalize"
 
-export function CountriesContainer() {
+export function CountriesContainer({ anchorClick }) {
 
 
     const countries = [
@@ -23,7 +22,7 @@ export function CountriesContainer() {
                         </span>
                         <span className="col-span-2">
                             <Button>
-                                <a className="flex flex-row gap-4 text-[10px] mx-2 md:px-8 py-1 md:py-2" href={`#${item.country}`}>
+                                <a className="flex flex-row gap-4 text-[10px] mx-2 md:px-8 py-1 md:py-2" href={`#${item.country}`} onClick={(e)=> anchorClick(e, `#${item.country}`)}>
                                 VIEW SUMMARY
                                 </a>
                             </Button>

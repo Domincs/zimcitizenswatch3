@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export function VerticalStepper ({items, progress}) {
+export function VerticalStepper ({items, progress, onClick}) {
 
     return (
         <div className="anchor-list-container" data-v-654f459c="">
@@ -13,12 +13,12 @@ export function VerticalStepper ({items, progress}) {
                     <ul className="anchor-list" data-v-654f459c="">
                     {
                         items.map((item, idx) => (
-                            <Link href={`#${item.name}`} key={idx}>
-                            <li className={`anchor-list-item ${item.active && 'active'}`} data-v-654f459c="">
-                                <span className="btn p-caption" data-v-654f459c="">
-                                <span className="ball" data-v-654f459c=""></span>{item.name}</span>
-                            </li>
-                            </Link>
+                            <button data-link={`#${item.name}`} key={idx} onClick={(e) => onClick(e, `#${item.name}`)}>
+                                <li className={`anchor-list-item ${item.active && 'active'}`} data-v-654f459c="">
+                                    <span className="btn p-caption" data-v-654f459c="">
+                                    <span className="ball" data-v-654f459c=""></span>{item.name}</span>
+                                </li>
+                            </button>
                         ))
                     }
                     </ul>
