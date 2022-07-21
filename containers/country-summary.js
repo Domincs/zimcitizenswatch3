@@ -8,7 +8,7 @@ export function CountrySummaryContainer({countFromDate, country}) {
         rulingParty = "Patriotic Front (PF)"
     }
     else if(country.toUpperCase() === 'MALAWI') {
-        rulingParty = "Democratic Progressive Party (DPP)"
+        rulingParty = "Malawi Congress Party (MCP)"
     }
 
     const [days, setDays] = useState(0)
