@@ -38,7 +38,7 @@ export const PromisesAreaContainer = ({ country, economy, governance, corruption
     
     return (
         <div className="flex flex-col container m-auto px-6 md:px-0">
-            <h2 className="text-[56px] my-4">Promise Area</h2>
+            <h2 className="text-[32px] md:text-[56px] my-4">Promise Area</h2>
             <Tabs tabs={tabsList} updateTab={updateTab} />
 
         </div>

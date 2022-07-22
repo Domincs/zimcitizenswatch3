@@ -46,8 +46,8 @@ export function CountrySummaryContainer({countFromDate, country}) {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 md:mt-[-3em] 2xl:container m-auto">
-            <div className="bg-green-light rounded-0 md:rounded-tr-[15px] py-[3em] overflow-hidden text-white sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem]">
-                <h2 className="text-[56px] leading-none pt-4 text-center sm:text-left">Time Since inauguration</h2>
+            <div className="bg-green-light rounded-0 md:rounded-tr-[15px] py-[2em] md:py-[3em] overflow-hidden text-white sm:pl-[2rem] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem]">
+                <h2 className="text-[32px] md:text-[56px] leading-none pt-4 text-center sm:text-left">Time Since inauguration</h2>
             </div>
             <div className="flex justify-between py-4 w-full md:pl-6 px-3 md:px-0 col-span-1 md:col-span-2 sm:pr-[2rem] lg:pr-[4rem] xl:pr-[5rem] 2xl:pr-[6rem]">
                 <CountryCountDown value={days} label="days" />
@@ -60,7 +60,7 @@ export function CountrySummaryContainer({countFromDate, country}) {
             </div>
             <div className="col-span-1 md:col-span-2 flex flex-col px-6 md:pl-6 lg:pr-[4rem] xl:pr-[5rem] 2xl:pr-[6rem]">
                 <div className="max-w-2xl py-4">
-                    <h2 className="text-[56px] py-8">Promises</h2>
+                    <h2 className="text-[32px] md:text-[56px] py-8">Promises</h2>
                     <p className="pr-0 md:pr-[6em] text-[20px] leading-[26px]">
                     The promises that we are tracking are derived from the commitments that {rulingParty} made in their manifesto as well as other key policy pronouncements. We evaluate each promise using the scale ranging from not commenced to implemented. Get informed on what was promised and how government is faring in meeting their promises.
                     </p>
