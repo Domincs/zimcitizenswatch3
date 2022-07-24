@@ -37,7 +37,7 @@ export default function Home({ summary }) {
       ease: "none",
       scrollTrigger: {
         trigger: ".horizontal-scroll",
-        start: 'top 25%',
+        start: 'top 15%',
         //end: () => innerWidth * (sections.length+1),
         pin: true,
         scrub: 0.1,

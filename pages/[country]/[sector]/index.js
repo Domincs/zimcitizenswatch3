@@ -12,7 +12,7 @@ import { normalize } from '../../../lib/normalize';
 export default function Home({sector, summary, promises}) {
 
   const { asPath } = useRouter();
-  const [keyNodes, setKeyNodes] = useState([{ active: true, text: "All categories" }])
+  const [keyNodes, setKeyNodes] = useState([])
   const [statuses, updateStatus] = useState([
     {label: "Total Promises", value: summary.all, active: true},
     {label: "Kept", value: summary.kept, active: false},
@@ -23,9 +23,10 @@ export default function Home({sector, summary, promises}) {
   ])
 
   const [currentPromises, setPromises] = useState(promises)
+  const [furtherFilter, setFurtherFilter] = useState(currentPromises)
 
-  useEffect(() => {
-    const nodes = promises.map(obj => {
+  const resetFilters = (thePromises) => {
+    const nodes = thePromises.map(obj => {
       return obj.keynode_name
     })
 
@@ -35,8 +36,30 @@ export default function Home({sector, summary, promises}) {
       return {active: false, text: item }
     })
 
-    setKeyNodes([...keyNodes, ...listItems])
+    setKeyNodes([{ active: true, text: "All categories" }, ...listItems])
+  }
+
+  useEffect(() => {
+    resetFilters(promises)
   },[promises])
+
+
+  const filterKeyNode = (keynode) => {
+    const newStatus = keyNodes.map(obj => {
+      if(obj.text === keynode) {
+        return {...obj, active: true}
+      }
+      return {...obj, active: false}
+    })
+    setKeyNodes(newStatus)
+    if(keynode === "All categories") {
+      setFurtherFilter(currentPromises)
+    }
+    else {
+      const filtered = currentPromises.filter(obj => normalize(obj.keynode_name).toUpperCase() === keynode.toUpperCase())
+      setFurtherFilter(filtered)
+    }
+  }
 
 
   const clickFilter = (id) => {
@@ -46,13 +69,18 @@ export default function Home({sector, summary, promises}) {
       }
       return {...obj, active: false}
     })
+    
     updateStatus(newStatus)
     if(id === "Total Promises") {
       setPromises(promises)
+      setFurtherFilter(promises)
+      resetFilters(promises)
     }
     else {
       const filtered = promises.filter(obj => normalize(obj.promise_state).toUpperCase() === id.toUpperCase())
       setPromises(filtered)
+      setFurtherFilter(filtered)
+      resetFilters(filtered)
     }
 
   }
@@ -66,7 +94,7 @@ export default function Home({sector, summary, promises}) {
           <h1 className="text-[56px] md:text-[106px] leading-none">{capitalize(sector)}</h1>
         </div>
         <SummaryOfPerformanceContainer date={moment().format("LL")} statuses={statuses} onClick={clickFilter}/>
-        <SectorPromisesContainer keyNodes={keyNodes} promises={currentPromises} path={asPath} />
+        <SectorPromisesContainer keyNodes={keyNodes} promises={furtherFilter} path={asPath} filterKeyNode={filterKeyNode} />
         
       </main>
     </div>
@@ -92,26 +120,3 @@ Home.getInitialProps = async ({query}) => {
 
   return { sector, summary, promises }
 }
-
-
-
-// export async function getStaticPaths() {
-
-//   const paths  = [
-//     { params: { hj: 'malawi' }},
-//     { params: { hj: 'zambia' }},
-//   ]
-
-//   return { paths, fallback: false }
-// }
-
-// export async function getStaticProps({ params }) {
-//     const { hj } = params;
-
-//   return {
-//     props: {
-//       hj
-//     },
-//     revalidate: 60,
-//   };
-// }

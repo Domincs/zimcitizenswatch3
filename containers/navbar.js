@@ -116,7 +116,7 @@ function classNames(...classes) {
                     }
                     else if(item.type === 'dropdown') {
                       return (
-                        <Menu as="div" className="ml-3 relative mt-[-0.45em]">
+                        <Menu as="div" className="ml-3 relative mt-[-0.45em]" key={idx}>
                           <Menu.Button className="flex rounded-full border focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white border-[#000000] px-[0.5em] py-0">
                             <span className="flex flex-row items-center justify-between gap-10">
                               <span>
@@ -172,7 +172,7 @@ function classNames(...classes) {
 
                     else if(item.type === 'select') {
                       return (
-                        <Menu as="div" className="ml-3 relative hidden sm:block mt-[-0.45em]">
+                        <Menu as="div" className="ml-3 relative hidden sm:block mt-[-0.45em]" key={idx}>
                           <Menu.Button className="flex focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white border-[#000000] px-[0.5em] py-0">
                             <span className="flex flex-row items-center justify-between gap-2">
                               {item.name}
@@ -213,7 +213,6 @@ function classNames(...classes) {
                       )
                     }
 
-                    return (<></>)
                   })
                 }
 
@@ -243,7 +242,7 @@ function classNames(...classes) {
                 }
                 else if(item.type === 'select') {
                   return (
-                    <Menu as="div" className="ml-3 relative">
+                    <Menu as="div" className="ml-3 relative" key={item.name}>
                       <Menu.Button className="flex rounded-full border focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white border-[#000000] px-[0.5em] py-0">
                         <span className="flex flex-row items-center justify-between gap-10">
                           {item.name}

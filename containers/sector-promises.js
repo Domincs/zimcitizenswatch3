@@ -2,7 +2,7 @@ import { FilterBadge } from "../components/filter-badge";
 import { PromiseItemContainer } from "./promise-item";
 import moment from 'moment';
 
-export function SectorPromisesContainer ({ keyNodes, promises, path }) {
+export function SectorPromisesContainer ({ keyNodes, promises, path, filterKeyNode }) {
 
     return (
         <div className="md:grid flex flex-col-reverse md:grid-cols-3">
@@ -49,7 +49,7 @@ export function SectorPromisesContainer ({ keyNodes, promises, path }) {
             <div className="flex flex-wrap h-fit gap-2 pl-0 md:pl-6 pd-6 max-w-sm">
                 {
                     keyNodes.map((item, idx) => (
-                        <FilterBadge key={idx} active={item.active} text={item.text} /> 
+                        <FilterBadge key={idx} active={item.active} text={item.text} filterKeyNode={filterKeyNode} /> 
                     ))
                 }
             </div>
