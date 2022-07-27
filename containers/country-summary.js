@@ -5,7 +5,7 @@ import { Newsletter } from "./newsletter";
 export function CountrySummaryContainer({countFromDate, country}) {
     let rulingParty = ""
     if(country.toUpperCase() === 'ZAMBIA') {
-        rulingParty = "Patriotic Front (PF)"
+        rulingParty = "United Party for National Development (UPND)"
     }
     else if(country.toUpperCase() === 'MALAWI') {
         rulingParty = "Malawi Congress Party (MCP)"

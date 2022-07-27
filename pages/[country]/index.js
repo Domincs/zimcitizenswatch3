@@ -24,7 +24,7 @@ export default function Home({country, summary, countFrom, economy, governance, 
       <main>
         <HeroContainer
             country={capitalize(country)}
-            description="Tracking the performance and effectiveness of the government of Malawi based on the pledges made in the manifesto and other important policy pronouncements."
+            description={`Tracking the performance and effectiveness of the government of ${capitalize(country)} based on the pledges made in the manifesto and other important policy pronouncements.`}
          />
         <CountrySummaryContainer countFromDate={countFrom} country={country} />
         <PromiseSummaryContainer statuses={statuses} />
