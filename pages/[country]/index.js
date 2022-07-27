@@ -6,6 +6,7 @@ import { capitalize } from '../../lib/capitalize'
 import { CountrySummaryContainer } from '../../containers/country-summary'
 import { PromiseSummaryContainer } from '../../containers/promise-summary'
 import { PromisesAreaContainer } from '../../components/promises-area'
+import { FooterContainer } from '../../containers/footer'
 
 export default function Home({country, summary, countFrom, economy, governance, corruption, climate_change, social_service}) {
   const statuses = [
@@ -28,6 +29,7 @@ export default function Home({country, summary, countFrom, economy, governance, 
         <CountrySummaryContainer countFromDate={countFrom} country={country} />
         <PromiseSummaryContainer statuses={statuses} />
         <PromisesAreaContainer country={country} economy={economy} governance={governance} corruption={corruption} climate_change={climate_change} social_service={social_service} />
+        <FooterContainer />
       </main>
     </div>
   );

@@ -6,6 +6,7 @@ import axios from 'axios'
 import { capitalize } from '../../../../lib/capitalize'
 import { useState } from 'react'
 import { normalize } from '../../../../lib/normalize'
+import { FooterContainer } from '../../../../containers/footer'
 
 export default function Home({ promise, sector, node, status, promises, slug, apiUrl }) {
   const [currentPromise, setCurrentPromise] = useState(promise)
@@ -60,6 +61,7 @@ export default function Home({ promise, sector, node, status, promises, slug, ap
           prevPromise={prevPromise}
           nextPromise={nextPromise}
         />
+        <FooterContainer />
       </main>
     </div>
   );

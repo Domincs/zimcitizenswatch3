@@ -8,6 +8,7 @@ import { SectorPromisesContainer } from '../../../containers/sector-promises';
 import { useRouter } from "next/router";
 import axios from 'axios'
 import { normalize } from '../../../lib/normalize';
+import { FooterContainer } from '../../../containers/footer';
 
 export default function Home({sector, summary, promises}) {
 
@@ -100,6 +101,7 @@ export default function Home({sector, summary, promises}) {
         </div>
         <SummaryOfPerformanceContainer date={moment().format("LL")} statuses={statuses} onClick={clickFilter}/>
         <SectorPromisesContainer keyNodes={keyNodes} promises={furtherFilter} currentNode={currentKeyNode} currentStatus={currentStatus} path={asPath} filterKeyNode={filterKeyNode} />
+        <FooterContainer />
         
       </main>
     </div>
