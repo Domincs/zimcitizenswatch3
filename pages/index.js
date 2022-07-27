@@ -9,7 +9,8 @@ import { AboutContainer } from '../containers/about';
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import gsap from "gsap";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { FooterContainer } from '../containers/footer';
 
 
 export default function Home({ summary }) {
@@ -68,6 +69,8 @@ export default function Home({ summary }) {
 
   }
 
+  
+
 
   return (
     <div className="static next-default-container">
@@ -88,6 +91,7 @@ export default function Home({ summary }) {
           items={items}
         />
         <AboutContainer />
+        <FooterContainer/>
       </main>
     </div>
   );

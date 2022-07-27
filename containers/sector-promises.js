@@ -2,7 +2,7 @@ import { FilterBadge } from "../components/filter-badge";
 import { PromiseItemContainer } from "./promise-item";
 import moment from 'moment';
 
-export function SectorPromisesContainer ({ keyNodes, promises, path, filterKeyNode }) {
+export function SectorPromisesContainer ({ keyNodes, promises, currentNode, path, currentStatus, filterKeyNode }) {
 
     return (
         <div className="md:grid flex flex-col-reverse md:grid-cols-3">
@@ -36,7 +36,10 @@ export function SectorPromisesContainer ({ keyNodes, promises, path, filterKeyNo
                                 key={idx} 
                                 status={item.promise_state} 
                                 promise={item.promise_title} 
+                                currentNode={currentNode}
+                                currentStatus={currentStatus}
                                 color={color} 
+                                slug={item.slug}
                                 icon={`/icons/${item.promise_state}.svg`}
                                 date={item.source_date && moment(item.source_date).format('DD-MMMM-YYYY')}
                                 link={`${path}/${item.slug}`}

@@ -55,7 +55,7 @@ export function CountrySummaryContainer({countFromDate, country}) {
                 <CountryCountDown value={minutes} label="minutes" />
                 <CountryCountDown value={seconds} label="seconds" />
             </div>
-            <div className="bg-gray-normal flex flex-col rounded-0 md:rounded-br-[15px] overflow-hidden sm:pl-[2rem] px-6 md:pr-8 pb-[4em] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem]">
+            <div className="bg-gray-normal flex flex-col rounded-0 md:rounded-br-[15px] overflow-hidden sm:pl-[2rem] px-6 md:pr-8 pb-[2em] lg:pl-[4rem] xl:pl-[5rem] 2xl:pl-[6rem]">
                 <Newsletter />
             </div>
             <div className="col-span-1 md:col-span-2 flex flex-col px-6 md:pl-6 lg:pr-[4rem] xl:pr-[5rem] 2xl:pr-[6rem]">

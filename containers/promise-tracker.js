@@ -4,7 +4,7 @@ import { RoundedButton } from "../components/rounded-button";
 import { normalize } from "../lib/normalize";
 import moment from 'moment'
 
-export function PromiseTracker({sector, promise }) {
+export function PromiseTracker({sector, promise, prevPromise, nextPromise }) {
     let color                
     if(promise[0].promise_state === 'implemented') {
         color = `bg-implemented`
@@ -64,14 +64,14 @@ export function PromiseTracker({sector, promise }) {
             </div>
 
             <div className="flex flex-row-reverse m-auto md:m-0 md:flex-col gap-4 pr-0 md:pr-[2rem] lg:pr-[4rem] xl:pr-[5rem] 2xl:pr-[6rem] items-center md:items-end mb-4">
-                <RoundedButton>
+                <RoundedButton onClick={nextPromise}>
                     <span className="flex flex-row justify-between w-[16em] px-4 py-2">
                         <span className="leading-none">Next Promise</span>
                         <img src="/icons/right-arrow-black.svg" className="h-[1em" />
                     </span>
                 </RoundedButton>
 
-                <RoundedButton>
+                <RoundedButton onClick={prevPromise}>
                     <span className="flex flex-row justify-between w-[16em] px-4 py-2">
                         <img src="/icons/left-arrow-black.svg" className="h-[1em" />
                         <span className="leading-none">Previous Promise</span>

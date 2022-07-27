@@ -16,6 +16,7 @@ module.exports = {
       orange: '#F15C27',
       black: '#000000',
       white: '#ffffff',
+      blue: '#333F48',
       transparent: {
         0: 'rgba(0,0,0,0.5)',
         400: 'rgba(0,0,0,0.4)',

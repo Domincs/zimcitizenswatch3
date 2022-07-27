@@ -17,7 +17,7 @@ export default function Home({country, summary, countFrom, economy, governance, 
     {label: "Implemented", value: summary.implemented}
   ]
   return (
-    <div className="static mb-[6em] my-4">
+    <div className="static mb-[6em] my-4 overflow-x-hidden">
       <SEO title='Country' />
       <NavbarContainer />
       <main>

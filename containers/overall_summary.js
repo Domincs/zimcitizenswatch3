@@ -34,10 +34,10 @@ export function OverallSummaryContainer({ summary, anchorClick, scrolled, items 
                 </div>
             </div>
 
-            <div className="col-span-4 md:col-span-3 flex flex-row flex-nowrap gap-[6em] px-[18em]" id="horizontal-scroll-container">
+            <div className="col-span-4 md:col-span-3 flex flex-row flex-nowrap gap-[6em] px-[18em]" id="horizontal-scroll-container z-[-1]">
                 {
                     Object.keys(summary).map((item, key) => (
-                        <ScrollSection key={key} country={capitalize(item)} summary={summary[item]} additional_classes="panel z-[-1]"
+                        <ScrollSection key={key} country={capitalize(item)} summary={summary[item]} additional_classes="panel"
                         link={items.find((obj) => obj.activeTab === true) && items.find((obj) => obj.name === capitalize(item)).link} target={items.find((obj) => obj.activeTab === true) && items.find((obj) => obj.name === capitalize(item)).target} />
                     ))
                 }

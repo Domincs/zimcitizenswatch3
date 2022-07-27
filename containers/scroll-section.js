@@ -49,7 +49,7 @@ export function ScrollSection({country, summary, additional_classes, link, targe
 
     return(
         <div className={`${additional_classes} ml-[-18em]`}>
-            <div className={`flex flex-row overflow-x-scroll flex-nowrap pb-[4em] pl-6 sm:pl-0`} id={country}>
+            <div className={`flex flex-row overflow-x-scroll flex-nowrap pb-[4em] pl-6 sm:pl-0 hide-scrollbar`} id={country}>
                 <span className="flex flex-col w-fit mr-[4em]">
                     <h2 className="text-2xl md:text-4xl uppercase w-max mb-6">Time Since Inauguration</h2>
                     <span className="flex justify-between w-full">

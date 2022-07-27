@@ -13,6 +13,9 @@ export default function Home({sector, summary, promises}) {
 
   const { asPath } = useRouter();
   const [keyNodes, setKeyNodes] = useState([])
+  const [currentKeyNode, SetCurrentKeyNode] = useState([])
+  const [currentStatus, SetCurrentStatus] = useState([])
+
   const [statuses, updateStatus] = useState([
     {label: "Total Promises", value: summary.all, active: true},
     {label: "Kept", value: summary.kept, active: false},
@@ -45,6 +48,7 @@ export default function Home({sector, summary, promises}) {
 
 
   const filterKeyNode = (keynode) => {
+    SetCurrentKeyNode(keynode)
     const newStatus = keyNodes.map(obj => {
       if(obj.text === keynode) {
         return {...obj, active: true}
@@ -63,6 +67,7 @@ export default function Home({sector, summary, promises}) {
 
 
   const clickFilter = (id) => {
+    SetCurrentStatus(id)
     const newStatus = statuses.map(obj => {
       if(obj.label === id) {
         return {...obj, active: true}
@@ -91,10 +96,10 @@ export default function Home({sector, summary, promises}) {
       <NavbarContainer />
       <main className="">
         <div className="container m-auto my-12">
-          <h1 className="text-[56px] md:text-[106px] leading-none">{capitalize(sector)}</h1>
+          <h1 className="text-[56px] md:text-[106px] leading-none">{capitalize(normalize(sector))}</h1>
         </div>
         <SummaryOfPerformanceContainer date={moment().format("LL")} statuses={statuses} onClick={clickFilter}/>
-        <SectorPromisesContainer keyNodes={keyNodes} promises={furtherFilter} path={asPath} filterKeyNode={filterKeyNode} />
+        <SectorPromisesContainer keyNodes={keyNodes} promises={furtherFilter} currentNode={currentKeyNode} currentStatus={currentStatus} path={asPath} filterKeyNode={filterKeyNode} />
         
       </main>
     </div>
