@@ -17,11 +17,11 @@ export function FooterContainer() {
         });
     }
     return(
-        <div className="flex flex-col overflow-hidden">
+        <div className="flex flex-col overflow-hidden bottom-0">
             <button className="bg-blue text-white text-center py-2" onClick={scrollToTop}>
                 Back to top
             </button>
-            <div className="flex flex-col md:flex-row container m-auto py-4 px-6 md:p-0">
+            <div className="flex flex-col md:flex-row container m-auto py-4 px-6 md:p-0 mt-4">
                 <div className="shrink max-w-[12em] py-4">
                     <p className="text-[16px] leading-none">
                         This platform was made possible by the generous assistance of our following partners:

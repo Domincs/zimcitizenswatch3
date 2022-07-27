@@ -67,13 +67,13 @@ export function PromiseTracker({sector, promise, prevPromise, nextPromise }) {
                 <RoundedButton onClick={nextPromise}>
                     <span className="flex flex-row justify-between w-[16em] px-4 py-2">
                         <span className="leading-none">Next Promise</span>
-                        <img src="/icons/right-arrow-black.svg" className="h-[1em" />
+                        <img src="/icons/right-arrow-black.svg" className="h-[1em]" />
                     </span>
                 </RoundedButton>
 
                 <RoundedButton onClick={prevPromise}>
                     <span className="flex flex-row justify-between w-[16em] px-4 py-2">
-                        <img src="/icons/left-arrow-black.svg" className="h-[1em" />
+                        <img src="/icons/left-arrow-black.svg" className="h-[1em]" />
                         <span className="leading-none">Previous Promise</span>
                     </span>
                 </RoundedButton>

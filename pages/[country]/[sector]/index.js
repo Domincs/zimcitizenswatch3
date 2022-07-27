@@ -14,8 +14,8 @@ export default function Home({sector, summary, promises}) {
 
   const { asPath } = useRouter();
   const [keyNodes, setKeyNodes] = useState([])
-  const [currentKeyNode, SetCurrentKeyNode] = useState([])
-  const [currentStatus, SetCurrentStatus] = useState([])
+  const [currentKeyNode, SetCurrentKeyNode] = useState("All categories")
+  const [currentStatus, SetCurrentStatus] = useState("Total Promises")
 
   const [statuses, updateStatus] = useState([
     {label: "Total Promises", value: summary.all, active: true},
@@ -92,7 +92,7 @@ export default function Home({sector, summary, promises}) {
   }
 
   return (
-    <div className="static mb-[6em] px-4 md:px-0">
+    <div className="static px-4 md:px-0">
       <SEO title='Sector' />
       <NavbarContainer />
       <main className="">

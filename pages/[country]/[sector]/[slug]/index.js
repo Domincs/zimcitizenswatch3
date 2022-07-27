@@ -8,11 +8,12 @@ import { useState } from 'react'
 import { normalize } from '../../../../lib/normalize'
 import { FooterContainer } from '../../../../containers/footer'
 
-export default function Home({ promise, sector, node, status, promises, slug, apiUrl }) {
+export default function Home({ promise, sector, node, status, promises, slug, apiUrl, country }) {
   const [currentPromise, setCurrentPromise] = useState(promise)
 
   const nextPromise = () => {
     console.log(node)
+    console.log(status)
     let filtered = promises
     if(node !== "All categories")
       filtered = filtered.filter(obj => normalize(obj.keynode_name).toUpperCase() === node.toUpperCase())
@@ -22,14 +23,20 @@ export default function Home({ promise, sector, node, status, promises, slug, ap
     const index = filtered.findIndex(item => item.slug === slug)
 
     if(index < filtered.length-1) {
+      console.log(`${apiUrl}/${sector}/promises/${filtered[index+1].slug}`)
+      // const data = await axios.get(`${apiUrl}/${sector}/promises/${filtered[index+1].slug}`).data
+      // console.log(data)
       axios.get(`${apiUrl}/${sector}/promises/${filtered[index+1].slug}`).then(
-        res => setCurrentPromise(res.data)
+        res => {
+          console.log(res.data)
+          //setCurrentPromise(res.data)
+        }
       ).catch(err => console.log(err))
     }
 
   }
 
-  const prevPromise = () => {
+  const prevPromise = async() => {
     let filtered = promises
     if(node !== "All categories")
       filtered = filtered.filter(obj => normalize(obj.keynode_name).toUpperCase() === node.toUpperCase())
@@ -39,7 +46,9 @@ export default function Home({ promise, sector, node, status, promises, slug, ap
     const index = filtered.findIndex(item => item.slug === slug)
 
     if(index > 0) {
-      axios.get(`${apiUrl}/${sector}/promises/${filtered[index11].slug}`).then(
+      // const data = await axios.get(`${apiUrl}/${sector}/promises/${filtered[index-1].slug}`).data
+      // console.log(data)
+      axios.get(`${apiUrl}/${sector}/promises/${filtered[index-1].slug}`).then(
         res => setCurrentPromise(res.data)
       ).catch(err => console.log(err))
     }
@@ -47,12 +56,12 @@ export default function Home({ promise, sector, node, status, promises, slug, ap
   }
 
   return (
-    <div className="static mb-[6em]">
+    <div className="static">
       <SEO title='Sector' />
       <NavbarContainer />
       <main>
         <div className="container m-auto my-12 px-6">
-          <Breadcrumb />
+          <Breadcrumb link={`/${country}/${sector}`}/>
         </div>
     
         <PromiseTracker
@@ -79,5 +88,5 @@ Home.getInitialProps = async ({query}) => {
   const promises = (await axios.get(`${apiUrl}/${sector}/promises`)).data
 
   const promise = (await axios.get(`${apiUrl}/${sector}/promises/${slug}`)).data
-  return { promise, sector, node, status, promises, slug, apiUrl }
+  return { promise, sector, node, status, promises, slug, apiUrl, country }
 }
