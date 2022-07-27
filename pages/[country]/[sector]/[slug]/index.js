@@ -8,19 +8,20 @@ import { useState } from 'react'
 import { normalize } from '../../../../lib/normalize'
 import { FooterContainer } from '../../../../containers/footer'
 
-export default function Home({ promise, sector, node, status, promises, slug, apiUrl, country }) {
+export default function Home({ promise, sector, node, status, slug, promises, apiUrl, country }) {
   const [currentPromise, setCurrentPromise] = useState(promise)
+  const [slugVal, setSlugVal] = useState(slug)
 
   const nextPromise = () => {
-    console.log(node)
-    console.log(status)
     let filtered = promises
     if(node !== "All categories")
       filtered = filtered.filter(obj => normalize(obj.keynode_name).toUpperCase() === node.toUpperCase())
     if(status !== "Total Promises")
       filtered = promises.filter(obj => normalize(obj.promise_state).toUpperCase() === status.toUpperCase())
 
-    const index = filtered.findIndex(item => item.slug === slug)
+    const index = filtered.findIndex(item => item.slug === slugVal)
+    console.log(index)
+    console.log(filtered.length)
 
     if(index < filtered.length-1) {
       console.log(`${apiUrl}/${sector}/promises/${filtered[index+1].slug}`)
@@ -29,7 +30,8 @@ export default function Home({ promise, sector, node, status, promises, slug, ap
       axios.get(`${apiUrl}/${sector}/promises/${filtered[index+1].slug}`).then(
         res => {
           console.log(res.data)
-          //setCurrentPromise(res.data)
+          setCurrentPromise(res.data)
+          setSlugVal(res.data[0].slug)
         }
       ).catch(err => console.log(err))
     }
@@ -43,13 +45,19 @@ export default function Home({ promise, sector, node, status, promises, slug, ap
     if(status !== "Total Promises")
       filtered = promises.filter(obj => normalize(obj.promise_state).toUpperCase() === status.toUpperCase())
 
-    const index = filtered.findIndex(item => item.slug === slug)
+    const index = filtered.findIndex(item => item.slug === slugVal)
+    console.log(index)
+    console.log(filtered.length)
 
     if(index > 0) {
       // const data = await axios.get(`${apiUrl}/${sector}/promises/${filtered[index-1].slug}`).data
       // console.log(data)
       axios.get(`${apiUrl}/${sector}/promises/${filtered[index-1].slug}`).then(
-        res => setCurrentPromise(res.data)
+        res => {
+          console.log(res.data)
+          setCurrentPromise(res.data)
+          setSlugVal(res.data[0].slug)
+        }
       ).catch(err => console.log(err))
     }
 
