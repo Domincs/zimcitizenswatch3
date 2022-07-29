@@ -80,7 +80,7 @@ export default function Home({ summary }) {
         <Background />
         <HeroContainer
             country="African"
-            description="an independent platform that tracks the performance and effectiveness of of African governments based on the pledges made in the manifesto and other important policy pronouncements."
+            description="An independent platform that tracks the performance and effectiveness of African governments based on the pledges made in the manifesto and other important policy pronouncements."
             link="#about-section"
          />
         <CountriesContainer anchorClick={anchorClick} />
