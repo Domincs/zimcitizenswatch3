@@ -41,6 +41,7 @@ else if(asPath.includes('/malawi')) {
 else {
   navigation = [
     { name: 'Reports', href: '#', type: 'link', active: true },
+    { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
     { name: 'Select Country', href: '#', type: 'dropdown', option: [
       {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
       {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'},
@@ -104,14 +105,12 @@ function classNames(...classes) {
                   navigation.map((item, idx) => {
                     if(item.type === 'link') {
                       return (
-                        <Link key={idx} href={item.href}>
-                          <a className='group hidden md:flex md:flex-col' >
+                        <Link key={idx} href={item.href} passHref={item.href.includes("https://")}>
+                          <a className='group hidden md:flex md:flex-col' href={item.href} target={ item.href.includes("https://") ? "_blank": "_self" } {...(item.href.includes("https://") && { rel: "noreferrer" })}>
                             <span className="px-2">{item.name}</span>
                             <span className="h-[6px] w-full transition ease-in-out duration-300 delay-150 border-radius group-hover:bg-orange"/>
                           </a>
                         </Link>
-                        
-                      
                       )
                     }
                     else if(item.type === 'dropdown') {
@@ -231,6 +230,8 @@ function classNames(...classes) {
                     key={item.name}
                     as="a"
                     href={item.href}
+                    target={ item.href.includes("https://") ? "_blank": "_self" }
+                    {...(item.href.includes("https://") && { rel: "noreferrer" })}
                     className={classNames(
                       item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                       'block px-3 py-2 rounded-md text-base font-medium'
@@ -239,6 +240,7 @@ function classNames(...classes) {
                   >
                     {item.name}
                   </Disclosure.Button>)
+
                 }
                 else if(item.type === 'select') {
                   return (
