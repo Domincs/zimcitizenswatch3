@@ -13,6 +13,7 @@ let navigation
 if(asPath.includes('/zambia')) {
   navigation = [
     { name: 'Reports', href: '#', type: 'link', active: true },
+    { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
     { name: 'Key Documents', href: '#', type: 'select', option: [
       {label: 'Manifesto', link: '/documents/zambia/UPND_Party Manifesto_2021-2026_Zambia.pdf'}
     ]},
@@ -27,6 +28,7 @@ if(asPath.includes('/zambia')) {
 else if(asPath.includes('/malawi')) {
   navigation = [
     { name: 'Reports', href: '#', type: 'link', active: true },
+    { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
     { name: 'Key Documents', href: '#', type: 'select', option: [
       {label: 'Manifesto', link: '/documents/malawi/MCP Manifesto_Abridged Version_2019-2024.pdf'}
     ]},
@@ -55,7 +57,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
     return(
-    <Disclosure as="nav" className="bg-gray-800 relative z-50 text-[16px] pt-3">
+    <Disclosure as="nav" className="relative z-50 text-[16px] pt-3">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">

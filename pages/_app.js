@@ -4,6 +4,8 @@ import NProgress from 'nprogress'; //nprogress module
 import * as gtag from '../lib/gtag';
 import 'tailwindcss/tailwind.css';
 import '../styles/tailwind.css';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

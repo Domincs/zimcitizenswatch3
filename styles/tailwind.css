@@ -11,6 +11,7 @@
       --sivio-modified: #F15C27;
       --sivio-broken: #CC0202;
       --sivio-gray-text: #BEBEBE;
+      --sivio-blue: #333F48;
   }
   
 
@@ -142,6 +143,9 @@ img[width] {
 }
 .box-shadow {
   box-shadow: 0px 10px 45px rgba(55, 76, 91, 0.15);
+}
+.sivio-box-shadow-md {
+  box-shadow: 0px 10px 45px rgba(30, 41, 49, 0.37)
 }
 .border-radius {
   border-radius: 15px;

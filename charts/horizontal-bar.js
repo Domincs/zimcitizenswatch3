@@ -1,19 +1,20 @@
 import Highcharts from 'highcharts/highstock';
 import Chart from 'highcharts-react-official';
 
-export const Bar = ({
-  data,
-  title,
+export const HorizontalBar = ({
+  title="",
   pointWidth = 16,
   height = 530,
-  yAxisTitle = 'Number of Respondents',
+  yAxisTitle = 'Number',
+  data = []
 }) => {
+
   const options = {
     title: {
       text: title,
     },
     chart: {
-      type: 'column',
+      type: 'bar',
       height,
     },
     colors: [
@@ -40,6 +41,7 @@ export const Bar = ({
     xAxis: {
       categories: data[0].data.map((dt) => dt.name),
     },
+    
     yAxis: {
       min: 0,
       title: {
@@ -48,9 +50,13 @@ export const Bar = ({
     },
     series: data.map((dt) => {
       return {
-        name: dt.description,
-        data: dt.data.map((dt) => dt.y),
-        showInLegend: true,
+        name: dt.sector,
+        showInLegend: false, 
+        data: dt.data.map((dt) => {
+          return {y:dt.y, color: dt.color}
+        }),
+        showInLegend: false,
+        color: 'var(--sivio-kept)'
       };
     }),
   };
