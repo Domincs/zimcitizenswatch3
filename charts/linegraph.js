@@ -26,16 +26,13 @@ export const LineGraph = ({ series, xAxis='', yAxis='', title=null, categories=[
 
         <Tooltip useHTML={true} pointFormat={"<b>{point.y} promises were <b>{series.name}</b>"}/>
 
-        <XAxis type="datetime" categories={[]} labels={
+        <XAxis type="category"  labels={
           {
-            format: '{value:%d}',
             rotation: 45,
-            align: 'left',
-            formatter: function() {
-              return Highcharts.dateFormat('%e', this.value);
-            }
+            align: 'left'
           }
-        }>
+        }
+        >
           <XAxis.Title>{xAxis}</XAxis.Title>
         </XAxis>
 
@@ -44,8 +41,16 @@ export const LineGraph = ({ series, xAxis='', yAxis='', title=null, categories=[
           <YAxis.Title>{yAxis}</YAxis.Title>
           {
               series.map((line, idx) => {
-                console.log(line.color)
-                return <LineSeries color={line.color} key={idx} name={line.title} data={line.data} />
+                return <LineSeries 
+                          color={line.color} 
+                          key={idx} 
+                          name={line.title} 
+                          data={line.data} 
+                          marker={{enabled: false}} 
+                          label={{
+                            enabled: true
+                          }}
+                        />
               })
           }
         </YAxis>
