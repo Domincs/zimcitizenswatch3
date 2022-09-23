@@ -12,7 +12,7 @@ let navigation
 
 if(asPath.includes('/zambia')) {
   navigation = [
-    { name: 'Reports', href: '/zambia', type: 'link', active: true },
+    { name: 'Reports', href: '/', type: 'link', active: true },
     { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
     { name: 'Key Documents', href: '#', type: 'select', option: [
       {label: 'Manifesto', link: '/documents/zambia/UPND_Party Manifesto_2021-2026_Zambia.pdf'}
@@ -27,7 +27,7 @@ if(asPath.includes('/zambia')) {
 }
 else if(asPath.includes('/malawi')) {
   navigation = [
-    { name: 'Reports', href: '/malawi', type: 'link', active: true },
+    { name: 'Reports', href: '/', type: 'link', active: true, disabled: true },
     { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
     { name: 'Key Documents', href: '#', type: 'select', option: [
       {label: 'Manifesto', link: '/documents/malawi/MCP Manifesto_Abridged Version_2019-2024.pdf'}
@@ -107,7 +107,7 @@ function classNames(...classes) {
                   navigation.map((item, idx) => {
                     if(item.type === 'link') {
                       return (
-                        <Link key={idx} href={item.href} passHref={item.href.includes("https://")}>
+                        <Link key={idx} href={item.href} passHref={item.href.includes("https://")} >
                           <a className='group hidden md:flex md:flex-col' href={item.href} target={ item.href.includes("https://") ? "_blank": "_self" } {...(item.href.includes("https://") && { rel: "noreferrer" })}>
                             <span className="px-2">{item.name}</span>
                             <span className="h-[6px] w-full transition ease-in-out duration-300 delay-150 border-radius group-hover:bg-orange"/>
