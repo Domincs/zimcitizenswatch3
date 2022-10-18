@@ -51,9 +51,9 @@ export function AboutContainer() {
                         />
 
                         <StatusDescriptionContainer
-                            status="Kept"
-                            color="bg-kept"
-                            icon={`/icons/kept.svg`}
+                            status="In Progress"
+                            color="bg-inprogress"
+                            icon={`/icons/inprogress.svg`}
                             description="Actions that the government has commenced and is in the process of achieving."
                         />
 

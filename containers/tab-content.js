@@ -5,7 +5,7 @@ export function TabContent({content, link, sector, summary }) {
     const data = [{
         sector: sector,
         data: [
-          { name: 'Kept', y: summary.kept, color: 'var(--sivio-kept)' },
+          { name: 'In Progress', y: summary.inprogress, color: 'var(--sivio-inprogress)' },
           { name: 'Not Commenced', y: summary.not_commenced, color: 'var(--sivio-not-commenced)' },
           { name: 'Modified', y: summary.modified, color: 'var(--sivio-modified)' },
           { name: 'Broken', y: summary.broken, color: 'var(--sivio-broken)' },

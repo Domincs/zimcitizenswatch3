@@ -32,7 +32,7 @@ module.exports = {
         muted: '#908E9B',
       },
       implemented: '#678C13',
-      kept: '#7FBD42',
+      inprogress: '#7FBD42',
       notcommenced: '#323D43',
       modified: '#F15C27',
       broken: '#CC0202'

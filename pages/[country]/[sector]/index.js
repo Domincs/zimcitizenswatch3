@@ -19,7 +19,7 @@ export default function Home({sector, summary, promises}) {
 
   const [statuses, updateStatus] = useState([
     {label: "Total Promises", value: summary.all, active: true},
-    {label: "Kept", value: summary.kept, active: false},
+    {label: "In Progress", value: summary.inprogress, active: false},
     {label: "Not Commenced", value: summary.not_commenced, active: false},
     {label: "Modified", value: summary.modified, active: false},
     {label: "Broken", value: summary.broken, active: false},
@@ -83,7 +83,7 @@ export default function Home({sector, summary, promises}) {
       resetFilters(promises)
     }
     else {
-      const filtered = promises.filter(obj => normalize(obj.promise_state).toUpperCase() === id.toUpperCase())
+      const filtered = promises.filter(obj => normalize(obj.promise_state).toUpperCase() === id.toUpperCase().replace(" ", ""))
       setPromises(filtered)
       setFurtherFilter(filtered)
       resetFilters(filtered)

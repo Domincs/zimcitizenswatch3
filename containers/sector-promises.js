@@ -3,7 +3,7 @@ import { PromiseItemContainer } from "./promise-item";
 import moment from 'moment';
 
 export function SectorPromisesContainer ({ keyNodes, promises, currentNode, path, currentStatus, filterKeyNode }) {
-    console.log("friday ",currentNode, currentStatus)
+    
     return (
         <div className="md:grid flex flex-col-reverse md:grid-cols-3">
             <div className="col-span-1 flex md:col-span-2 bg-gray-light py-6 rounded-0 md:rounded-r-[40px] justify-end">
@@ -19,8 +19,8 @@ export function SectorPromisesContainer ({ keyNodes, promises, currentNode, path
                             if(item.promise_state === 'implemented') {
                                 color = `bg-implemented`
                             }
-                            else if(item.promise_state === 'kept') {
-                                color = `bg-kept`
+                            else if(item.promise_state === 'inprogress') {
+                                color = `bg-inprogress`
                             }
                             else if(item.promise_state === 'not_commenced') {
                                 color = `bg-notcommenced`

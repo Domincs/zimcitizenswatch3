@@ -40,7 +40,7 @@ export function ScrollSection({country, summary, additional_classes, link, targe
 
     const sectors = [
         {value: summary['all'], label: "Total Promises"},
-        {value: summary['kept'], label: "Kept"},
+        {value: summary['inprogress'], label: "In Progress"},
         {value: summary['not_commenced'], label: "Not Commenced"},
         {value: summary['modified'], label: "Modified"},
         {value: summary['broken'], label: "Broken"},

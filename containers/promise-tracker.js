@@ -9,8 +9,8 @@ export function PromiseTracker({sector, promise, prevPromise, nextPromise }) {
     if(promise[0].promise_state === 'implemented') {
         color = `bg-implemented`
     }
-    else if(promise[0].promise_state === 'kept') {
-        color = `bg-kept`
+    else if(promise[0].promise_state === 'inprogress') {
+        color = `bg-inprogress`
     }
     else if(promise[0].promise_state === 'not_commenced') {
         color = `bg-notcommenced`

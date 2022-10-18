@@ -11,7 +11,7 @@ import { FooterContainer } from '../../containers/footer'
 export default function Home({country, summary, countFrom, economy, governance, corruption, climate_change, social_service}) {
   const statuses = [
     {label: "Total Promises", value: summary['all']},
-    {label: "Kept", value: summary.kept},
+    {label: "In Progress", value: summary.inprogress},
     {label: "Not Commenced", value: summary.not_commenced},
     {label: "Modified", value: summary.modified},
     {label: "Broken", value: summary.broken},

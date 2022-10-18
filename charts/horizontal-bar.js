@@ -18,7 +18,7 @@ export const HorizontalBar = ({
       height,
     },
     colors: [
-      'var(--sivio-kept)',
+      'var(--sivio-inprogress)',
       'var(--sivio-not-commenced)',
       'var(--sivio-modified)',
       'var(--sivio-broken)',
@@ -56,7 +56,7 @@ export const HorizontalBar = ({
           return {y:dt.y, color: dt.color}
         }),
         showInLegend: false,
-        color: 'var(--sivio-kept)'
+        color: 'var(--sivio-inprogress)'
       };
     }),
   };

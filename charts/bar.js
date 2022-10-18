@@ -17,7 +17,7 @@ export const Bar = ({
       height,
     },
     colors: [
-      'var(--sivio-kept)',
+      'var(--sivio-inprogress)',
       'var(--sivio-not-commenced)',
       'var(--sivio-modified)',
       'var(--sivio-broken)',
