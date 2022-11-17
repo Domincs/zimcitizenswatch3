@@ -44,7 +44,7 @@ export const Treemap = ({ title=null, data=[] }) => {
                     color: '#000000',
                     textTransform: 'uppercase',
                     textOutline: 'none',
-                    fontFamily: "TT Commons Medium"
+                    fontFamily: 'Figtree'
                   }
                   
                 }

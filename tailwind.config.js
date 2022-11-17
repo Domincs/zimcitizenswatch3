@@ -39,7 +39,7 @@ module.exports = {
     },
 
     fontFamily: {
-      sans: ['TT Commons', 'Graphik', 'sans-serif'],
+      sans: ['Figtree', 'sans-serif'],
       serif: ['IBM Plex Sans', 'Merriweather', 'serif'],
     },
     extend: {
