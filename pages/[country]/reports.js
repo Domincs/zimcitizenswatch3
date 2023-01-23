@@ -2,7 +2,6 @@
 import { SEO } from '../../components/seo'
 import { NavbarContainer } from '../../containers/navbar'
 import { capitalize } from '../../lib/capitalize'
-import { useRouter } from "next/router"
 import { FooterContainer } from '../../containers/footer'
 import { ReportFilterContainer } from '../../containers/report-filter'
 import { GraphContainer } from '../../containers/graph-container'
@@ -14,9 +13,6 @@ import { GraphsData } from '../../lib/data-builder'
 
 export default function Home({ country, allSources, summary, start, end, apiUrl }) {
 
-  const { asPath } = useRouter();
-
-  
 
   const [dateState, setDateState] = useState([
     {

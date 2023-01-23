@@ -12,7 +12,7 @@ let navigation
 
 if(asPath.includes('/zambia')) {
   navigation = [
-    { name: 'Reports', href: '/', type: 'link', active: true },
+    { name: 'Reports', href: '/zambia/reports', type: 'link', active: true },
     { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
     { name: 'Key Documents', href: '#', type: 'select', option: [
       {label: 'Manifesto', link: '/documents/zambia/UPND_Party Manifesto_2021-2026_Zambia.pdf'}
@@ -27,7 +27,7 @@ if(asPath.includes('/zambia')) {
 }
 else if(asPath.includes('/malawi')) {
   navigation = [
-    { name: 'Reports', href: '/', type: 'link', active: true, disabled: true },
+    { name: 'Reports', href: '/malawi/reports', type: 'link', active: true, disabled: true },
     { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
     { name: 'Key Documents', href: '#', type: 'select', option: [
       {label: 'Manifesto', link: '/documents/malawi/MCP Manifesto_Abridged Version_2019-2024.pdf'}
@@ -42,7 +42,7 @@ else if(asPath.includes('/malawi')) {
 }
 else {
   navigation = [
-    { name: 'Reports', href: '/', type: 'link', active: true },
+    // { name: 'Reports', href: '/', type: 'link', active: true },
     { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
     { name: 'Select Country', href: '#', type: 'dropdown', option: [
       {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},

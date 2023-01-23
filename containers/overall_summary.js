@@ -34,7 +34,7 @@ export function OverallSummaryContainer({ summary, anchorClick, scrolled, items 
                 </div>
             </div>
 
-            <div className="col-span-4 md:col-span-3 flex flex-row flex-nowrap gap-[6em] px-[18em]" id="horizontal-scroll-container z-[-1]">
+            <div className="col-span-4 md:col-span-3 flex flex-row flex-nowrap gap-[6em] px-[18em] z-[-1]" id="horizontal-scroll-container">
                 {
                     Object.keys(summary).map((item, key) => (
                         <ScrollSection key={key} country={capitalize(item)} summary={summary[item]} additional_classes="panel"

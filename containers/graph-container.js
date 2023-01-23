@@ -11,19 +11,20 @@ export function GraphContainer({ updateChartButton, chartButton, reportPeriod, t
  
     return (
         <div className="bg-gray-normal py-[3em]">
-            <div className="container m-auto bg-white border-radius p-6 box-shadow flex flex-columns">
+            <div className="container m-auto bg-white border-radius p-6 box-shadow flex flex-col">
                 <div className="grid grid-cols-10 w-full px-4 gap-12">
                     <div className="grid grid-cols-10 col-span-10">
-                        <div className="col-span-7">
-                            <h4>Explore performance from {moment(reportPeriod[0].startDate).format("LL")} to {moment(reportPeriod[0].endDate).format("LL")}</h4>
+                        <div className="col-span-10 md:col-span-7">
+                            <h4 className="text-[18px] lg:text-[32px]">Explore performance from {moment(reportPeriod[0].startDate).format("ll")} to {moment(reportPeriod[0].endDate).format("ll")}</h4>
                         </div>
-                        <div className="col-span-3 flex justify-between">
-                            <Image src="/icons/filter-icon.svg" width={31.48} height={28.18} />
-                            <h4>Interact with the data</h4>
-                        </div>
+                        {/* <div className="col-span-10 md:col-span-3 flex justify-between">
+                            <Image src="/icons/filter-icon.svg" width={31.48} height={28.18} className=""/>
+                            <h4 className="text-[18px] lg:text-[32px]">Interact with the data</h4>
+                        </div> */}
                     </div>
-
-                    <div className="col-span-7">
+                </div>
+                <div className="grid grid-cols-10 w-full px-4 gap-12 overflow-scroll">
+                    <div className="col-span-7 min-w-[10em]">
                         { chartButton.filter(obj => obj.active === true)[0].name === 'treemap' && <Treemap data={treemapData} /> }
                         {
                         chartButton.filter(obj => obj.active === true)[0].name === 'line-graph' &&

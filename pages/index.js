@@ -54,8 +54,8 @@ export default function Home({ summary }) {
       e.preventDefault();
       const target_ele = document.querySelector(iTarget)
       const scroll_cont = document.querySelector("#horizontal-scroll-container")
-      const offset = scroll_cont.getBoundingClientRect()
-      const target = target_ele.getBoundingClientRect()
+      const offset = scroll_cont?.getBoundingClientRect()
+      const target = target_ele?.getBoundingClientRect()
       // const containerOffset = (offset.top+window.pageYOffset + target.left) * (offset.width / (offset.width - window.innerWidth));
       const containerOffset = offset.top+window.pageYOffset + target.left ;
 
