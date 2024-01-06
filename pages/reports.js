@@ -1,15 +1,15 @@
 
-import { SEO } from '../../components/seo'
-import { NavbarContainer } from '../../containers/navbar'
-import { capitalize } from '../../lib/capitalize'
-import { FooterContainer } from '../../containers/footer'
-import { ReportFilterContainer } from '../../containers/report-filter'
-import { GraphContainer } from '../../containers/graph-container'
+import { SEO } from '../components/seo'
+import { NavbarContainer } from '../containers/navbar'
+import { capitalize } from '../lib/capitalize'
+import { FooterContainer } from '../containers/footer'
+import { ReportFilterContainer } from '../containers/report-filter'
+import { GraphContainer } from '../containers/graph-container'
 import { useState, useEffect } from 'react'
 import moment from 'moment'
-import { PromiseAreas, Statuses } from '../../lib/constants'
+import { PromiseAreas, Statuses } from '../lib/constants'
 import axios from 'axios'
-import { GraphsData } from '../../lib/data-builder'
+import { GraphsData } from '../lib/data-builder'
 
 export default function Home({ country, allSources, summary, start, end, apiUrl }) {
 

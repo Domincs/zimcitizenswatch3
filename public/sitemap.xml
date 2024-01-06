@@ -1,22 +1,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-    <loc>https://africancitizenswatch.org</loc>
-    <changefreq>daily</changefreq>
-  </url>
-<url>
-    <loc>https://africancitizenswatch.org/[country]/index</loc>
-    <changefreq>daily</changefreq>
-  </url>
-<url>
-    <loc>https://africancitizenswatch.org/[country]/reports</loc>
-    <changefreq>daily</changefreq>
-  </url>
-<url>
-    <loc>https://africancitizenswatch.org/[country]/[sector]/index</loc>
-    <changefreq>daily</changefreq>
-  </url>
-<url>
-    <loc>https://africancitizenswatch.org/[country]/[sector]/[slug]/index</loc>
+    <loc>https://africancitizenswatch.org/reports</loc>
     <changefreq>daily</changefreq>
   </url>
 </urlset>

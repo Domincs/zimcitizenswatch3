@@ -13,7 +13,7 @@ export function SectorPromisesContainer ({ keyNodes, promises, currentNode, path
                     </span>
                      
                     {
-                        promises.map((item, idx) => {
+                        promises?.map((item, idx) => {
                             let color
                             
                             if(item.promise_state === 'implemented') {

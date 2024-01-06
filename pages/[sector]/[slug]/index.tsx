@@ -1,12 +1,12 @@
-import { Breadcrumb } from '../../../../components/breakcrumb'
-import { SEO } from '../../../../components/seo'
-import { NavbarContainer } from '../../../../containers/navbar'
-import { PromiseTracker } from '../../../../containers/promise-tracker'
+import { Breadcrumb } from '../../../components/breakcrumb'
+import { SEO } from '../../../components/seo'
+import { NavbarContainer } from '../../../containers/navbar'
+import { PromiseTracker } from '../../../containers/promise-tracker'
 import axios from 'axios'
-import { capitalize } from '../../../../lib/capitalize'
+import { capitalize } from '../../../lib/capitalize'
 import { useState } from 'react'
-import { normalize } from '../../../../lib/normalize'
-import { FooterContainer } from '../../../../containers/footer'
+import { normalize } from '../../../lib/normalize'
+import { FooterContainer } from '../../../containers/footer'
 
 export default function Home({ promise, sector, node, status, slug, promises, apiUrl, country }) {
   const [currentPromise, setCurrentPromise] = useState(promise)

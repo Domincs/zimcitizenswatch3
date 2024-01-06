@@ -1,63 +1,67 @@
-import { Fragment, useEffect, useState } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { useRouter } from "next/router";
+import { Fragment, useEffect, useState } from 'react';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import classNames from 'classnames';
 
 export function NavbarContainer() {
-  const { asPath } = useRouter();
+
+  const [showShadow, setShowShadow] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const scrollThreshold = 50;
+      console.log("Position:", scrollPosition)
+      console.log("Threshold:", scrollThreshold)
+
+      setShowShadow(scrollPosition > scrollThreshold);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
 
-let navigation
-
-if(asPath.includes('/zambia')) {
-  navigation = [
-    { name: 'Reports', href: '/zambia/reports', type: 'link', active: true },
-    { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
-    { name: 'Key Documents', href: '#', type: 'select', option: [
-      {label: 'Manifesto', link: '/documents/zambia/UPND_Party Manifesto_2021-2026_Zambia.pdf'}
-    ]},
+  const navigation = [
+    { name: 'CitizensWatch Home', href: '/', type: 'link', active: true, disabled: true },
+    { name: 'Methodology', href: '/methodology', type: 'link', active: false, disabled: false },
+    { name: 'Submit Policy Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
+    { name: 'Reports', href: '/reports', type: 'link', active: false, disabled: false },
+    // { name: 'Key Documents', href: '#', type: 'select', option: [
+    //   {label: 'Manifesto', link: '/documents/malawi/MCP Manifesto_Abridged Version_2019-2024.pdf'}
+    // ]},
     { name: 'Select Country', href: '#', type: 'dropdown', option: [
-      {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
-      {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'},
-      {country: "Zimbabwe", link: "https://zimcitizenswatch.org", active: false, flag: '/flags/zw.svg'}
+      {country: "Malawi", link: "https://africancitizenswatch.org/zambia", active: false, flag: '/flags/mw.svg'},
+      {country: "Zambia", link: "https://africancitizenswatch.org/zambia", active: false, flag: '/flags/zm.svg'}
       ]
     }
   ]
-}
-else if(asPath.includes('/malawi')) {
-  navigation = [
-    { name: 'Reports', href: '/malawi/reports', type: 'link', active: true, disabled: true },
-    { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
-    { name: 'Key Documents', href: '#', type: 'select', option: [
-      {label: 'Manifesto', link: '/documents/malawi/MCP Manifesto_Abridged Version_2019-2024.pdf'}
-    ]},
-    { name: 'Select Country', href: '#', type: 'dropdown', option: [
-      {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
-      {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'},
-      {country: "Zimbabwe", link: "https://zimcitizenswatch.org", active: false, flag: '/flags/zw.svg'}
-      ]
-    }
-  ]
-}
-else {
-  navigation = [
-    // { name: 'Reports', href: '/', type: 'link', active: true },
-    { name: 'Submit Action', href: 'https://forms.office.com/r/yn0wMdFJPt', type: 'link', active: false },
-    { name: 'Select Country', href: '#', type: 'dropdown', option: [
-      {country: "Malawi", link: "/malawi", active: asPath.includes("/malawi"), flag: '/flags/mw.svg'},
-      {country: "Zambia", link: "/zambia", active: asPath.includes("/zambia"), flag: '/flags/zm.svg'},
-      {country: "Zimbabwe", link: "https://zimcitizenswatch.org", active: false, flag: '/flags/zw.svg'}
-      ]
-    }
-  ]
-}
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+  const menuClasses = classNames(
+    'fixed',
+    'top-0',
+    'bg-white',
+    'w-full',
+    'z-50',
+    'bg-white',
+    'transition-shadow',
+    'duration-300',
+    'text-[16px]',
+    'pt-3',
+    {
+      'shadow-md': showShadow,
+    }
+  );
+
+  // function classNames(...classes) {
+  //   return classes.filter(Boolean).join(' ')
+  // }
     return(
-    <Disclosure as="nav" className="relative z-50 text-[16px] pt-3">
+    <Disclosure as="nav" className={menuClasses}>
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -67,18 +71,18 @@ function classNames(...classes) {
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   {open ? (
                     <span>
-                      <Image src="/icons/close.svg" height={26} width={21} />
+                      <Image src="/icons/close.svg" height={26} width={21} alt="close" />
                     </span>
                   ) : (
-                    <span><Image src="/icons/menu.svg" height={26} width={21} /></span>
+                    <span><Image src="/icons/menu.svg" height={26} width={21} alt='open' /></span>
                   )}
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex flex-row gap-2 md:gap-6 items-center hidden md:flex">
-                    <a target="_blank" href="https://www.sivioinstitute.org">
-                      <Image src="/icons/logo.svg" height={42} width={93} />
-                    </a>
+                    <Link target="_blank" href="https://www.sivioinstitute.org">
+                      <Image src="/icons/logo.svg" height={42} width={93} alt="SIVIO" />
+                    </Link>
                     <span className="h-full w-[1px] bg-black"/>
                     <span className="flex flex-col leading-none py-1">
                       <Link href="/">
@@ -87,28 +91,18 @@ function classNames(...classes) {
                         </h4>
                       </Link>
                       
-                      <span className="text-[20px] leading-none">{asPath.includes('/zambia') ? 'Zambia': (asPath.includes('/malawi') ? 'Malawi': 'Home')}</span>
+                      <span className="text-[20px] leading-none">Zimbabwe</span>
                     </span>
                   
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-4">
                 {
-                  asPath !== "/" && 
-                  <Link href='/'>
-                    <a className='flex flex-col group' key="home001">
-                      <span className="px-2">CitizensWatch Home</span>
-                      <span className="h-[6px] w-full transition ease-in-out duration-300 delay-150 border-radius group-hover:bg-orange"/>
-                    </a>
-                  </Link>
-                }
-                
-                {
                   navigation.map((item, idx) => {
                     if(item.type === 'link') {
                       return (
                         <Link key={idx} href={item.href} passHref={item.href.includes("https://")} >
-                          <a className='group hidden md:flex md:flex-col' href={item.href} target={ item.href.includes("https://") ? "_blank": "_self" } {...(item.href.includes("https://") && { rel: "noreferrer" })}>
+                          <a rel="noreferrer" className='group hidden md:flex md:flex-col' href={item.href} target={ item.href.includes("https://") ? "_blank": "_self" } {...(item.href.includes("https://") && { rel: "noreferrer" })}>
                             <span className="px-2">{item.name}</span>
                             <span className="h-[6px] w-full transition ease-in-out duration-300 delay-150 border-radius group-hover:bg-orange"/>
                           </a>
@@ -130,7 +124,7 @@ function classNames(...classes) {
                               </span>
                               {
                                 item.option.find((obj) => obj.active === true) === undefined ?
-                                <img src="/icons/dropdown.svg" className="h-[9px]" />
+                                <img src="/icons/dropdown.svg" className="h-[9px]" alt='v' />
                                 :
                                 <img src={item.option.find((obj) => obj.active === true).flag} className="h-5 rounded shadow-2xl" />
 
@@ -152,13 +146,13 @@ function classNames(...classes) {
                                 item.option.map((menuItem, itemId) => (
                                   <Menu.Item key={itemId}>
                                     {({ active }) => (
-                                      <a
+                                      <Link
                                         href={menuItem.link}
                                         className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                         target={ menuItem.link.includes("https://zimcitizenswatch") ? "_blank": "_self" } {...(menuItem.link.includes("https://zimcitizenswatch") && { rel: "noreferrer" })} 
                                       >
                                         {menuItem.country}
-                                      </a>
+                                      </Link>
                                     )}
                                   </Menu.Item>
                                 ))
@@ -177,7 +171,7 @@ function classNames(...classes) {
                           <Menu.Button className="flex focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white border-[#000000] px-[0.5em] py-0">
                             <span className="flex flex-row items-center justify-between gap-2">
                               {item.name}
-                              <Image src="/icons/select-down-arrow.svg" height={12} width={15} />
+                              <Image src="/icons/select-down-arrow.svg" height={12} width={15} alt="v" />
                             </span>
                             
                           </Menu.Button>

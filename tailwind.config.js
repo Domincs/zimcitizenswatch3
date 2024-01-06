@@ -11,12 +11,13 @@ module.exports = {
     colors: {
       green: {
         light: '#7FBD42',
-        darker: '#678C13'
+        darker: '#1EA608'
       },
-      orange: '#F15C27',
+      orange: '#FF6E05',
       black: '#000000',
       white: '#ffffff',
       blue: '#333F48',
+      red: "#FF0505",
       transparent: {
         0: 'rgba(0,0,0,0.5)',
         400: 'rgba(0,0,0,0.4)',

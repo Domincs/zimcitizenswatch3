@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { GA_TRACKING_ID } from '../lib/gtag';
+import { NavbarContainer } from '../containers/navbar';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -42,6 +43,7 @@ class MyDocument extends Document {
           <link rel='icon' type='image/png' href='/icon.png' />
         </Head>
         <body style={{ fontSize: 20 }}>
+          <NavbarContainer />
           <Main />
           <NextScript />
         </body>

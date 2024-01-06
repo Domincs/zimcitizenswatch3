@@ -6,6 +6,7 @@ import 'tailwindcss/tailwind.css';
 import '../styles/tailwind.css';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import { Layout } from './../containers/layout';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -37,7 +38,9 @@ function MyApp({ Component, pageProps }) {
       router.events.off('routeChangeError');
     };
   }, [router.events]);
-  return <Component {...pageProps} />;
+  return <Layout>
+      <Component {...pageProps} />
+    </Layout>
 }
 
-export default MyApp
+export default MyApp;
