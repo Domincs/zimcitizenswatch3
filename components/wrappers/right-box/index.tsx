@@ -8,6 +8,7 @@ interface Props {
     children?: ReactNode;
     as?: 'div' | 'section' | 'nav' | 'header' | JSXElementConstructor<any>;
     full?: boolean;
+    primary?: boolean;
 }
 
 export const RightBox: FC<Props> = ({
@@ -17,11 +18,16 @@ export const RightBox: FC<Props> = ({
     id,
     children,
     full,
+    primary = true,
     ...rest
 }) => {
     const classes = cn(
+        'pr-1 sm:pr-[2rem] lg:pr-[4rem] xl:pr-[5rem] 2xl:pr-[6rem] rounded-l-lg',
         {
             'w-2/3': !full,
+        },
+        {
+            "bg-green-light": primary,
         },
         className
     );

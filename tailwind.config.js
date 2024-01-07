@@ -11,7 +11,7 @@ module.exports = {
     colors: {
       green: {
         light: '#7FBD42',
-        darker: '#1EA608'
+        darker: '#1EA608',
       },
       orange: '#FF6E05',
       black: '#000000',
@@ -25,6 +25,8 @@ module.exports = {
       gray: {
         light: '#F4F7FB',
         light2: '#F0F3F7',
+        light3: '#BEBEBE',
+        light4: '#eaeaea',
         darker: '#EEEEEE',
         divider: '#BEBEBE',
         deep: '#1A3950',

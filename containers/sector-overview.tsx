@@ -5,25 +5,25 @@ import { ButtonLink } from "../components/button-link";
 
 export const SectorOverview = () => {
     const [tabsList, updateActiveTab] = useState([
-        { 
-            label: "Economy", 
-            active: true, 
-            content:  <SectorsContent sectors={["job creation", "price stabilisation", "improving industry", "debt resolution", "mining", "domestic resolution"]} /> 
+        {
+            label: "Economy",
+            active: true,
+            content: <SectorsContent sectors={["job creation", "price stabilisation", "improving industry", "debt resolution", "mining", "domestic resolution"]} />
         },
-        { 
-            label: "Governance", 
-            active: false, 
-            content: <SectorsContent sectors={["job creation", "price stabilisation", "improving industry", "debt resolution", "mining", "domestic resolution"]}/>
-        },
-        { 
-            label: "Social Service", 
-            active: false, 
-            content: <SectorsContent sectors={["job creation", "price stabilisation", "improving industry", "debt resolution", "mining", "domestic resolution"]} /> 
-        },
-        { 
-            label: "Rural Development", 
+        {
+            label: "Governance",
             active: false,
-            content: <SectorsContent sectors={["job creation", "price stabilisation", "improving industry", "debt resolution", "mining", "domestic resolution"]} /> 
+            content: <SectorsContent sectors={["job creation", "price stabilisation", "improving industry", "debt resolution", "mining", "domestic resolution"]} />
+        },
+        {
+            label: "Social Service",
+            active: false,
+            content: <SectorsContent sectors={["job creation", "price stabilisation", "improving industry", "debt resolution", "mining", "domestic resolution"]} />
+        },
+        {
+            label: "Rural Development",
+            active: false,
+            content: <SectorsContent sectors={["job creation", "price stabilisation", "improving industry", "debt resolution", "mining", "domestic resolution"]} />
         },
     ])
 
@@ -41,9 +41,9 @@ export const SectorOverview = () => {
 
     return (
         <div className="py-32 w-full bg-gray-light min-h-screen">
-            <div className="container m-auto flex flex-col">
+            <div className="container m-auto flex flex-col gap-12">
                 <h2 className="leading-2 pb-20">Sectors Overview</h2>
-                
+
                 <div className="max-w-4xl">
                     <p>Under the 4 clusters (Economy, Governance, Social Services and Rural Development), ZIMCITIZENSWATCH assesses 14 priority areas. Each area is assessed based on the policy actions that government has taken, the state of legislation, the adequacy of budget allocation as well as a progress performance indicator. The SIVIO Institute is committed to assessing each area quarterly and is reliant on online updates through various digital news sources, press briefings and other official government statements to provide evidence.</p>
                 </div>
@@ -54,7 +54,7 @@ export const SectorOverview = () => {
     )
 }
 
-const SectorsContent = ({sectors}) => {
+const SectorsContent = ({ sectors }) => {
 
     return (
         <div className="py-8">

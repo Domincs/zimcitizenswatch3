@@ -36,25 +36,25 @@ export default function Home({ summary }) {
   );
 }
 
-export async function getStaticProps() {
-  const mwUrl = process.env.MW_URL
-  const zmUrl = process.env.ZM_URL
-  const zwUrl = process.env.ZW_URL
+// export async function getStaticProps() {
+//   const mwUrl = process.env.MW_URL
+//   const zmUrl = process.env.ZM_URL
+//   const zwUrl = process.env.ZW_URL
 
-  const malawi = (await axios.get(`${mwUrl}/summary`)).data
-  const zambia = (await axios.get(`${zmUrl}/summary`)).data
-  const zimbabwe = (await axios.get(`${zwUrl}/api/summary`)).data
+//   const malawi = (await axios.get(`${mwUrl}/summary`)).data
+//   const zambia = (await axios.get(`${zmUrl}/summary`)).data
+//   const zimbabwe = (await axios.get(`${zwUrl}/api/summary`)).data
 
-  return {
-    props: {
-      summary: { 
-        malawi: { ...malawi, inauguration: process.env.MW_INAUGURATION },
-        zambia: { ...zambia, inauguration: process.env.ZM_INAUGURATION },
-        zimbabwe: { ...zimbabwe, inauguration: process.env.ZW_INAUGURATION }
+//   return {
+//     props: {
+//       summary: { 
+//         malawi: { ...malawi, inauguration: process.env.MW_INAUGURATION },
+//         zambia: { ...zambia, inauguration: process.env.ZM_INAUGURATION },
+//         zimbabwe: { ...zimbabwe, inauguration: process.env.ZW_INAUGURATION }
 
-      }
+//       }
       
-    },
-    revalidate: 60,
-  };
-}
+//     },
+//     revalidate: 60,
+//   };
+// }

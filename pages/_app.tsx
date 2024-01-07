@@ -6,7 +6,7 @@ import 'tailwindcss/tailwind.css';
 import '../styles/tailwind.css';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { Layout } from './../containers/layout';
+import { Layout } from '../containers/layout';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -34,13 +34,13 @@ function MyApp({ Component, pageProps }) {
     router.events.on('routeChangeError', () => NProgress.done());
     return () => {
       router.events.off('routeChangeStart', handleRouteChange);
-      router.events.off('routeChangeComplete');
-      router.events.off('routeChangeError');
+      router.events.off('routeChangeComplete', null);
+      router.events.off('routeChangeError', null);
     };
   }, [router.events]);
   return <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <Component {...pageProps} />
+  </Layout>
 }
 
 export default MyApp;

@@ -5,30 +5,34 @@ import { useState } from "react"
 export const ActionsTaken = () => {
     const [tabsList, updateActiveTab] = useState([
         {
-            label: "Economy",
+            label: "NDS 1 Promises",
             active: true,
             content: ""
         },
         {
-            label: "Governance",
+            label: "Actions and Assessment",
             active: false,
             content: ""
         },
         {
-            label: "Social Service",
+            label: "Legislation",
             active: false,
             content: ""
         },
         {
-            label: "Rural Development",
+            label: "Budget",
             active: false,
-            content: "" 
+            content: ""
         },
+        {
+            label: "Performance",
+            active: false,
+            content: ""
+        }
     ])
     return (
-        <Box className="w-full">
-            <Tabs tabs={tabsList} updateTab={()=>{}} />
-
+        <Box className="w-full bg-gray-light">
+            <Tabs className="container mx-auto pt-5" tabs={tabsList} updateTab={() => { }} />
         </Box>
     )
 }

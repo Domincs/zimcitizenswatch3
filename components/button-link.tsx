@@ -7,14 +7,17 @@ type Props = {
     href: string,
     children: ReactNode,
     classNames?: string,
-    variant?: "primary" | "secondary" | "white" | "custom"
+    variant?: "primary" | "secondary" | "white" | "custom" | "classic"
 }
 
-export const ButtonLink: FC<Props> = ({href, children, classNames, variant="primary",...rest}: Props) => {
+export const ButtonLink: FC<Props> = ({ href, children, classNames, variant = "primary", ...rest }: Props) => {
     const classes = cn(
-            "font-serif text-sm uppercase flex flex-row gap-2 font-bold border-b-[1.5px] w-fit flex flex-row gap-4",
+        "font-sans text-sm uppercase flex flex-row gap-2 border-b-[1.5px] w-fit flex flex-row gap-4 items-center",
         {
             'border-green-light text-green-light': variant === "primary",
+        },
+        {
+            'text-gray-light-2': variant === "classic",
         },
         {
             'border-white text-white': variant === "white",
@@ -22,7 +25,7 @@ export const ButtonLink: FC<Props> = ({href, children, classNames, variant="prim
         classNames
     );
 
-    return(
+    return (
         <Link href={href} {...rest}>
             <a className={classes}>
                 {children}

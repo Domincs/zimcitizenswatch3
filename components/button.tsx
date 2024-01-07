@@ -1,6 +1,13 @@
 import classNames from 'classnames';
+import { ReactNode } from 'react';
 
-export function Button({ children, variation="primary", size="", ...rest}) {
+type Props = {
+    children: ReactNode;
+    variation?: "primary" | "outline";
+    className?: string;
+}
+
+export function Button({ children, variation = "primary", className, ...rest }: Props) {
 
     const buttonClasses = classNames(
         'transition',
@@ -18,10 +25,11 @@ export function Button({ children, variation="primary", size="", ...rest}) {
         },
         {
             'text-white bg-orange': variation === "primary",
-        }
+        },
+        className
     );
 
-    return(
+    return (
         <button className={buttonClasses} {...rest}>
             {children}
         </button>
