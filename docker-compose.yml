@@ -3,6 +3,6 @@ version: '3.8'
 services:
   app:
     build: .
-    image: african-citizenswatch-ui:latest
+    image: zimcitizenswatch3-ui:latest
     ports:
-      - '3005:3000'
+      - '3008:3000'
