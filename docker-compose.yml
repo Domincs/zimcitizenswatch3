@@ -5,4 +5,4 @@ services:
     build: .
     image: zimcitizenswatch3-ui:latest
     ports:
-      - '3008:3000'
+      - '3013:3000'
